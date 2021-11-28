@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29346539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.46, y: 6.85, z: 6.37}
+  m_LocalPosition: {x: 11.27, y: 1.17, z: 1.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -251,7 +251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 29346539}
-  turnSpeed: 5
+  moveDirection: {x: 0, y: 0, z: 0}
+  turnSpeed: 50
   walking_velocity: 0
   movementSpeed: 0
   rotationSpeed: 10
@@ -445,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 251123347}
+  moveDirection: {x: 0, y: 0, z: 0}
   turnSpeed: 50
   walking_velocity: 0
   movementSpeed: 0
@@ -661,7 +663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1088,11 +1090,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086213841}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 405459cf95635e147823887f2c1673af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAt: {fileID: 251123351}
+  camTransform: {fileID: 0}
+  distance: 5
 --- !u!81 &1086213844
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1100,7 +1105,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086213841}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1086213845
 Camera:
   m_ObjectHideFlags: 0

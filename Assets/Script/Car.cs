@@ -26,16 +26,20 @@ public class Car : MonoBehaviour
         // movementSpeed = 5.0f;
         movementSpeed = 0.0f;
         //controller = GetComponent<CharacterController>();
+        // car = GameObject.Find("Car_4_Blue");
+        // Instantiate(car, new Vector3(6.0f, 1.1f, 3.0f), Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float zdirection = Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.x);
-        float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.x);
+    //     float zdirection = Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
+    //     float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
+        float zdirection = -Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
+        float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         moveDirection = new Vector3(xdirection, 0.0f, zdirection);
 		//character_controller.Move(movement_direction * velocity * Time.deltaTime);
-		
+		Debug.Log("Moving direction is: "+ moveDirection);
 
 		if(Input.GetKey(KeyCode.UpArrow)) {
              // transform.position += transform.forward * Time.deltaTime * movementSpeed;
@@ -46,8 +50,8 @@ public class Car : MonoBehaviour
             //  }
              movementSpeed = 5.0f;
 			 //transform.position += moveDirection * Time.deltaTime * movementSpeed;
-             Debug.Log("Up pressed");
-             Debug.Log("moving direction is: "+ moveDirection);
+             // Debug.Log("Up pressed");
+             Debug.Log("Up pressed, moving direction is: "+ moveDirection);
 			 
          }else if(Input.GetKeyUp(KeyCode.UpArrow)){
 			 movementSpeed = 0.0f;
@@ -62,12 +66,19 @@ public class Car : MonoBehaviour
 		 }
 		 if(Input.GetKey(KeyCode.LeftArrow)) {
              // transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
-             transform.Rotate(Vector3.up * (-turnSpeed) * Time.deltaTime, Space.World);
+             // transform.Rotate(Vector3.up * (-turnSpeed) * Time.deltaTime, Space.World);
+             transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
+             // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
+             Debug.Log("Left pressed, moving direction is: "+ moveDirection);
 
          }
          else if(Input.GetKey(KeyCode.RightArrow)) {
-             // transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
-              transform.Rotate(Vector3.up * (turnSpeed) * Time.deltaTime, Space.World);
+              // transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
+              // transform.Rotate(Vector3.up * (turnSpeed) * Time.deltaTime, Space.World);
+              transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
+              // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
+              Debug.Log("Right pressed, moving direction is: "+ moveDirection);
+
          }else{}
 
         //controller.Move(moveDirection * movementSpeed * Time.deltaTime);
