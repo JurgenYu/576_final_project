@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 29346542}
   - component: {fileID: 29346541}
   - component: {fileID: 29346540}
+  - component: {fileID: 29346545}
   - component: {fileID: 29346544}
   m_Layer: 0
   m_Name: Cube
@@ -213,13 +214,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29346539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.684528, y: 2.6663384, z: 0.000045776367}
+  m_LocalPosition: {x: 10.46, y: 6.85, z: 6.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &29346544
+--- !u!143 &29346544
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29346539}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &29346545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 29346539}
   moveDirection: {x: 0, y: 0, z: 0}
-  turnSpeed: 10
+  turnSpeed: 5
   walking_velocity: 0
   movementSpeed: 0
   rotationSpeed: 10
@@ -421,14 +440,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251123347}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4a7f17bcdcbe8a4b9799839df57ec93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 251123347}
   moveDirection: {x: 0, y: 0, z: 0}
-  turnSpeed: 400
+  turnSpeed: 5
   walking_velocity: 0
   movementSpeed: 0
   rotationSpeed: 10
@@ -644,15 +663,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.923182
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.38
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.106289
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1057,13 +1076,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086213841}
-  m_LocalRotation: {x: -0.000000021855698, y: 0.00000003774895, z: -8.250297e-16, w: 1}
-  m_LocalPosition: {x: -0.0023865523, y: 0.012863372, z: -0.27106243}
+  m_LocalRotation: {x: 0.040318146, y: 0.7422875, z: -0.012486815, w: 0.66875106}
+  m_LocalPosition: {x: -0.0428, y: 0.0017, z: 0.0001}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 251123351}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 4.155, y: 96.057, z: 2.48}
 --- !u!114 &1086213843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,9 +1095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405459cf95635e147823887f2c1673af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAt: {fileID: 251123351}
-  camTransform: {fileID: 251123351}
-  distance: 5
 --- !u!81 &1086213844
 AudioListener:
   m_ObjectHideFlags: 0
