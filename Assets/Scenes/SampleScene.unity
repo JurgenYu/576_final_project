@@ -251,7 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 29346539}
-  moveDirection: {x: 0, y: 0, z: 0}
   turnSpeed: 5
   walking_velocity: 0
   movementSpeed: 0
@@ -446,8 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 251123347}
-  moveDirection: {x: 0, y: 0, z: 0}
-  turnSpeed: 5
+  turnSpeed: 50
   walking_velocity: 0
   movementSpeed: 0
   rotationSpeed: 10
