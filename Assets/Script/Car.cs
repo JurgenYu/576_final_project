@@ -16,7 +16,7 @@ public class Car : MonoBehaviour
     public float walking_velocity;   
     public float movementSpeed;
 	public float rotationSpeed = 10.0f;
-	public float gravity = 20.0f;	
+	//public float gravity = 20.0f;	
     void Start()
     {
         //animation_controller = GetComponent<Animator>();
@@ -48,7 +48,7 @@ public class Car : MonoBehaviour
             //  if (movementSpeed < 5.0f) {
             //      movementSpeed += 0.1f;
             //  }
-             movementSpeed = 5.0f;
+             movementSpeed = 50.0f;
 			 //transform.position += moveDirection * Time.deltaTime * movementSpeed;
              // Debug.Log("Up pressed");
              Debug.Log("Up pressed, moving direction is: "+ moveDirection);
