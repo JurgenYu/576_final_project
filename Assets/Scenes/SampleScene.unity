@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4470237, g: 0.49691898, b: 0.575073, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,6 +257,12 @@ MonoBehaviour:
   walking_velocity: 0
   movementSpeed: 0
   rotationSpeed: 10
+  gameCanvas: {fileID: 0}
+  terrain: {fileID: 0}
+  terrain_length: 0
+  terrain_width: 0
+  warehouses_position: []
+  house_prefab: {fileID: 0}
 --- !u!136 &29346546
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -424,7 +430,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66165809}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4a7f17bcdcbe8a4b9799839df57ec93, type: 3}
   m_Name: 
@@ -435,6 +441,12 @@ MonoBehaviour:
   walking_velocity: 0
   movementSpeed: 0
   rotationSpeed: 10
+  gameCanvas: {fileID: 0}
+  terrain: {fileID: 0}
+  terrain_length: 0
+  terrain_width: 0
+  warehouses_position: []
+  house_prefab: {fileID: 0}
 --- !u!143 &66165812
 CharacterController:
   m_ObjectHideFlags: 0
@@ -798,6 +810,12 @@ MonoBehaviour:
   walking_velocity: 0
   movementSpeed: 0
   rotationSpeed: 10
+  gameCanvas: {fileID: 0}
+  terrain: {fileID: 0}
+  terrain_length: 0
+  terrain_width: 0
+  warehouses_position: []
+  house_prefab: {fileID: 100006, guid: bff9f12c2b78a19499683923993e62cc, type: 3}
 --- !u!54 &251123349
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -896,6 +914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405459cf95635e147823887f2c1673af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAt: {fileID: 0}
+  camTransform: {fileID: 0}
+  distance: 5
 --- !u!81 &283922795
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1826,13 +1847,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.39553767, y: -0.14767383, z: 0.1488494, w: 0.89419585}
+  m_LocalPosition: {x: -2.97, y: 7.99, z: 5.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 24
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 48.706, y: -12.813, z: 13.083}
 --- !u!1001 &706567007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2487,6 +2508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405459cf95635e147823887f2c1673af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAt: {fileID: 0}
+  camTransform: {fileID: 0}
+  distance: 5
 --- !u!81 &1086213844
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3023,6 +3047,7 @@ GameObject:
   - component: {fileID: 1664500910}
   - component: {fileID: 1664500909}
   - component: {fileID: 1664500908}
+  - component: {fileID: 1664500911}
   m_Layer: 5
   m_Name: PlayAgainButton
   m_TagString: Untagged
@@ -3132,6 +3157,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664500906}
   m_CullTransparentMesh: 1
+--- !u!114 &1664500911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664500906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5e32f4aec8471448f892ff5941f7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1692764140
 PrefabInstance:
   m_ObjectHideFlags: 0
