@@ -66,7 +66,7 @@ public class Car : MonoBehaviour
         //character_controller.Move(movement_direction * velocity * Time.deltaTime);
         // Debug.Log("Moving direction is: "+ moveDirection);
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             // transform.position += transform.forward * Time.deltaTime * movementSpeed;
             // moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
@@ -92,7 +92,7 @@ public class Car : MonoBehaviour
         // {
         //     movementSpeed = Mathf.Clamp(movementSpeed - 0.5f, 0, movementSpeed);
         // }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             // transform.position -= transform.forward * Time.deltaTime * movementSpeed;
             //  moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
@@ -122,7 +122,7 @@ public class Car : MonoBehaviour
         // {
         //     movementSpeed = 0.0f;
         // }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             // transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
             // transform.Rotate(Vector3.up * (-turnSpeed) * Time.deltaTime, Space.World);
@@ -131,7 +131,7 @@ public class Car : MonoBehaviour
             // Debug.Log("Left pressed, moving direction is: "+ moveDirection);
 
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             // transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
             // transform.Rotate(Vector3.up * (turnSpeed) * Time.deltaTime, Space.World);
