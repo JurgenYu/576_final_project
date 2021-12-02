@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Buildings;
 
 public class Car : MonoBehaviour
 {
@@ -195,6 +196,7 @@ public class Car : MonoBehaviour
             GameObject house = Instantiate(house_prefab, sample_wh_position, Quaternion.identity);
             house.name = "HOUSE" + i.ToString();
             house.AddComponent<BoxCollider>();
+            house.AddComponent<House>();
             house.GetComponent<BoxCollider>().isTrigger = true;
             house.GetComponent<BoxCollider>().size = new Vector3(3.0f, 3.0f, 3.0f);
             house.AddComponent<ParticleSystem>();
