@@ -8,14 +8,14 @@ public class Car : MonoBehaviour
 {
     // Start is called before the first frame update、private Animator animation_controller;
     private CharacterController controller;
-	//private Animator animation_controller;
-	public GameObject car;
+    //private Animator animation_controller;
+    public GameObject car;
     public Vector3 moveDirection;
-	// public float turnSpeed = 10.0f;
+    // public float turnSpeed = 10.0f;
     public float turnSpeed = 50.0f;
-    public float walking_velocity;   
+    public float walking_velocity;
     public float movementSpeed;
-	public float rotationSpeed = 10.0f;
+    public float rotationSpeed = 10.0f;
     public Canvas gameCanvas;
     public Terrain terrain;
     public float terrain_length;
@@ -23,7 +23,7 @@ public class Car : MonoBehaviour
 
     public List<Vector3> warehouses_position;
     public GameObject house_prefab;
-	//public float gravity = 20.0f;	
+    //public float gravity = 20.0f;	
     void Start()
     {
         //animation_controller = GetComponent<Animator>();
@@ -42,7 +42,8 @@ public class Car : MonoBehaviour
         //     Debug.Log("Prefab not exists");
         // }
 
-        if (gameCanvas == null) {
+        if (gameCanvas == null)
+        {
             Debug.Log("Doesn't exist");
         }
         gameCanvas.enabled = false;
@@ -57,61 +58,98 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    //     float zdirection = Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
-    //     float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
+        //     float zdirection = Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
+        //     float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         float zdirection = -Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         moveDirection = new Vector3(xdirection, 0.0f, zdirection);
-		//character_controller.Move(movement_direction * velocity * Time.deltaTime);
-		// Debug.Log("Moving direction is: "+ moveDirection);
+        //character_controller.Move(movement_direction * velocity * Time.deltaTime);
+        // Debug.Log("Moving direction is: "+ moveDirection);
 
-		if(Input.GetKey(KeyCode.UpArrow)) {
-             // transform.position += transform.forward * Time.deltaTime * movementSpeed;
-             // moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
-             // transform.position += moveDirection * Time.deltaTime * movementSpeed;
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            // transform.position += transform.forward * Time.deltaTime * movementSpeed;
+            // moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
+            // transform.position += moveDirection * Time.deltaTime * movementSpeed;
             //  if (movementSpeed < 5.0f) {
             //      movementSpeed += 0.1f;
             //  }
-             movementSpeed = 50.0f;
-			 //transform.position += moveDirection * Time.deltaTime * movementSpeed;
-             // Debug.Log("Up pressed");
-             // Debug.Log("Up pressed, moving direction is: "+ moveDirection);
-			 
-         }else if(Input.GetKeyUp(KeyCode.UpArrow)){
-			 movementSpeed = 0.0f;
-		 }
-         else if(Input.GetKey(KeyCode.DownArrow)) {
-             // transform.position -= transform.forward * Time.deltaTime * movementSpeed;
-             //  moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
-             movementSpeed = -5.0f;
-             //transform.position += moveDirection * Time.deltaTime * movementSpeed;
-         }else if(Input.GetKeyUp(KeyCode.DownArrow)){
-			movementSpeed = 0.0f;
-		 }
-		 if(Input.GetKey(KeyCode.LeftArrow)) {
-             // transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
-             // transform.Rotate(Vector3.up * (-turnSpeed) * Time.deltaTime, Space.World);
-             transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
-             // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
-             // Debug.Log("Left pressed, moving direction is: "+ moveDirection);
+            if (movementSpeed < 0)
+            {
+                movementSpeed = Mathf.Clamp(movementSpeed + 0.1f, -50.0f, 0);
+            }
+            else
+            {
+                movementSpeed = Mathf.Clamp(movementSpeed + 0.05f, 0, 50.0f);
+            }
+            Debug.Log(movementSpeed);
+            //transform.position += moveDirection * Time.deltaTime * movementSpeed;
+            // Debug.Log("Up pressed");
+            // Debug.Log("Up pressed, moving direction is: "+ moveDirection);
 
-         }
-         else if(Input.GetKey(KeyCode.RightArrow)) {
-              // transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
-              // transform.Rotate(Vector3.up * (turnSpeed) * Time.deltaTime, Space.World);
-              transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
-              // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
-              // Debug.Log("Right pressed, moving direction is: "+ moveDirection);
+        }
+        // else if (Input.GetKeyUp(KeyCode.UpArrow))
+        // {
+        //     movementSpeed = Mathf.Clamp(movementSpeed - 0.5f, 0, movementSpeed);
+        // }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            // transform.position -= transform.forward * Time.deltaTime * movementSpeed;
+            //  moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
+            if (movementSpeed > 0)
+            {
+                movementSpeed = Mathf.Clamp(movementSpeed - 0.1f, 0, 50.0f);
+            }
+            else
+            {
+                movementSpeed = Mathf.Clamp(movementSpeed - 0.025f, -15.0f, 0);
+            }
+            Debug.Log(movementSpeed);
+            //transform.position += moveDirection * Time.deltaTime * movementSpeed;
+        }
+        else
+        {
+            if (movementSpeed > 0)
+            {
+                movementSpeed = Mathf.Clamp(movementSpeed - 0.025f, 0, movementSpeed);
+            }
+            else
+            {
+                movementSpeed = Mathf.Clamp(movementSpeed + 0.025f, movementSpeed, 0);
+            }
+        }
+        // else if (Input.GetKeyUp(KeyCode.DownArrow))
+        // {
+        //     movementSpeed = 0.0f;
+        // }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            // transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
+            // transform.Rotate(Vector3.up * (-turnSpeed) * Time.deltaTime, Space.World);
+            transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
+            // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
+            // Debug.Log("Left pressed, moving direction is: "+ moveDirection);
 
-         }else{}
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            // transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
+            // transform.Rotate(Vector3.up * (turnSpeed) * Time.deltaTime, Space.World);
+            transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
+            // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
+            // Debug.Log("Right pressed, moving direction is: "+ moveDirection);
+
+        }
 
         //controller.Move(moveDirection * movementSpeed * Time.deltaTime);
-		transform.position += moveDirection * Time.deltaTime * movementSpeed;
+        transform.position += moveDirection * Time.deltaTime * movementSpeed;
         // Debug.Log("My position is: "+  transform.position);
-	}
+    }
 
-    void drawWareHouses(int totalWareHouses) {
-        for (int i = 0; i < totalWareHouses; i++) {
+    void drawWareHouses(int totalWareHouses)
+    {
+        for (int i = 0; i < totalWareHouses; i++)
+        {
 
             // record the x position and z position of the warehouse 
             float whx = 0;
@@ -130,16 +168,20 @@ public class Car : MonoBehaviour
 
                 // check if this position is already in the list
                 // if not in the list, check if two warehouses are too close to each other
-                if (!warehouses_position.Contains(sample_wh_position)) {
+                if (!warehouses_position.Contains(sample_wh_position))
+                {
                     int itr = 0;
-                    for (itr = 0; itr < warehouses_position.Count; itr++) {
+                    for (itr = 0; itr < warehouses_position.Count; itr++)
+                    {
                         float distance = Vector3.Distance(sample_wh_position, warehouses_position[itr]);
-                        if (distance < 30.0f) {
+                        if (distance < 30.0f)
+                        {
                             break;
                         }
                     }
 
-                    if (itr == (warehouses_position.Count - 1)) {
+                    if (itr == (warehouses_position.Count - 1))
+                    {
                         warehouses_position.Add(sample_wh_position);
                         is_valid = true;
                     }
@@ -165,7 +207,8 @@ public class Car : MonoBehaviour
             // house.AddComponent<House>();
 
 
-            for (int x = 0; x < terrain_length; x++) {
+            for (int x = 0; x < terrain_length; x++)
+            {
 
             }
         }
