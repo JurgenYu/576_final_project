@@ -55,6 +55,10 @@ public class Car : MonoBehaviour
         drawWareHouses(3);
     }
 
+    void OnTriggerEnter(Collider col) {
+        Debug.Log(col.gameObject.name);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -82,7 +86,6 @@ public class Car : MonoBehaviour
             {
                 movementSpeed = Mathf.Clamp(movementSpeed + 0.05f, 0, 50.0f);
             }
-            Debug.Log(movementSpeed);
             //transform.position += moveDirection * Time.deltaTime * movementSpeed;
             // Debug.Log("Up pressed");
             // Debug.Log("Up pressed, moving direction is: "+ moveDirection);
@@ -104,7 +107,6 @@ public class Car : MonoBehaviour
             {
                 movementSpeed = Mathf.Clamp(movementSpeed - 0.025f, -15.0f, 0);
             }
-            Debug.Log(movementSpeed);
             //transform.position += moveDirection * Time.deltaTime * movementSpeed;
         }
         else

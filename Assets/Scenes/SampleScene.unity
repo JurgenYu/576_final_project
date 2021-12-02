@@ -841,9 +841,9 @@ CapsuleCollider:
   m_GameObject: {fileID: 251123347}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.023623178
-  m_Height: 0.020084858
+  m_Enabled: 0
+  m_Radius: 0.08
+  m_Height: 0.17
   m_Direction: 1
   m_Center: {x: -0.00034471598, y: 0.00016216839, z: 4.656813e-10}
 --- !u!4 &251123351 stripped
@@ -869,6 +869,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &251123355
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251123347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: -1
+  m_Mesh: {fileID: 4300008, guid: 80492071631ffe442bdaacf7b2e4a9f3, type: 3}
 --- !u!1 &283922792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,7 +1508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2489,13 +2503,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086213841}
-  m_LocalRotation: {x: 0.037457567, y: 0.68943924, z: -0.011606831, w: 0.7232812}
-  m_LocalPosition: {x: -0.0428, y: 0.0017, z: 0.0001}
+  m_LocalRotation: {x: 0.073912784, y: 0.7032332, z: -0.073912784, w: 0.7032332}
+  m_LocalPosition: {x: -0.05, y: 0.011, z: 0.0001}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 251123351}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 4.157, y: 96.057, z: 2.48}
+  m_LocalEulerAnglesHint: {x: 12, y: 90, z: 0}
 --- !u!114 &1086213843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2544,7 +2558,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
