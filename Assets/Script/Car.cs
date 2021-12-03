@@ -21,6 +21,8 @@ public class Car : MonoBehaviour
     public Terrain terrain;
     public float terrain_length;
     public float terrain_width;
+	internal float player_health = 3.0f;
+	public GameObject scroll_bar;
 
     public List<Vector3> warehouses_position;
     public GameObject house_prefab;
@@ -37,6 +39,7 @@ public class Car : MonoBehaviour
         // car = GameObject.Find("Car_4_Blue");
         // Instantiate(car, new Vector3(6.0f, 1.1f, 3.0f), Quaternion.identity);
         gameCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+		player_health = 2.0f;
         // house_prefab = GameObject.Find("Assets/warehouse/house.fbx");
 
         // if (house_prefab == null) {
@@ -209,7 +212,19 @@ public class Car : MonoBehaviour
             main.startColor = new Color(0.0f, 1.0f, 0.0f, 0.7f);
             ps.Play();
             // house.AddComponent<House>();
-
+			scroll_bar.GetComponent<Scrollbar>().size = player_health;
+			if (player_health < 0.5f)
+			{
+				ColorBlock cb = scroll_bar.GetComponent<Scrollbar>().colors;
+				cb.disabledColor = new Color(1.0f, 0.0f, 0.0f);
+				scroll_bar.GetComponent<Scrollbar>().colors = cb;
+			}
+			else
+			{
+				ColorBlock cb = scroll_bar.GetComponent<Scrollbar>().colors;
+				cb.disabledColor = new Color(0.0f, 1.0f, 0.25f);
+				scroll_bar.GetComponent<Scrollbar>().colors = cb;
+			}
 
             for (int x = 0; x < terrain_length; x++)
             {
