@@ -55,9 +55,9 @@ public class Car : MonoBehaviour
         drawWareHouses(3);
     }
 
-    void OnTriggerEnter(Collider col) {
-        Debug.Log(col.gameObject.name);
-    }
+    // void OnTriggerEnter(Collider col) {
+    //     Debug.Log(col.gameObject.name);
+    // }
 
     // Update is called once per frame
     void Update()
