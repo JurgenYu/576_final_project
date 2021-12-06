@@ -23,29 +23,25 @@ public class Car : MonoBehaviour
     public float terrain_width;
 	internal float player_health = 3.0f;
 	public GameObject scroll_bar;
-
+	public Text score_text;             // text UI element showing the score
+	public Text timer;
+	public float timeValue;
+	public int packageNumber;
     public List<Vector3> warehouses_position;
     public GameObject house_prefab;
+	public bool hasTimeUsed;
     //public float gravity = 20.0f;	
     void Start()
     {
-        //animation_controller = GetComponent<Animator>();
-        //controller = GetComponent<CharacterController>();
+        
         moveDirection = new Vector3(0.0f, 0.0f, 0.0f);
         walking_velocity = 2.0f;
-        // movementSpeed = 5.0f;
         movementSpeed = 0.0f;
-        //controller = GetComponent<CharacterController>();
-        // car = GameObject.Find("Car_4_Blue");
-        // Instantiate(car, new Vector3(6.0f, 1.1f, 3.0f), Quaternion.identity);
         gameCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 		player_health = 2.0f;
-        // house_prefab = GameObject.Find("Assets/warehouse/house.fbx");
-
-        // if (house_prefab == null) {
-        //     Debug.Log("Prefab not exists");
-        // }
-
+		hasTimeUsed = false;
+		packageNumber = 0;
+		timeValue = 60.0f;
         if (gameCanvas == null)
         {
             Debug.Log("Doesn't exist");
@@ -66,22 +62,26 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //     float zdirection = Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
-        //     float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
+		if(timeValue>0){
+			timeValue -= Time.deltaTime;
+			
+			
+		}else{
+			timeValue = 0;
+			hasTimeUsed = true;
+			
+		}
+		DisplayTime(timeValue);
+		//if picked up, package number ++;
+		DisplayScore(packageNumber);
+ 
         float zdirection = -Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         moveDirection = new Vector3(xdirection, 0.0f, zdirection);
-        //character_controller.Move(movement_direction * velocity * Time.deltaTime);
-        // Debug.Log("Moving direction is: "+ moveDirection);
+
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            // transform.position += transform.forward * Time.deltaTime * movementSpeed;
-            // moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
-            // transform.position += moveDirection * Time.deltaTime * movementSpeed;
-            //  if (movementSpeed < 5.0f) {
-            //      movementSpeed += 0.1f;
-            //  }
             if (movementSpeed < 0)
             {
                 movementSpeed = Mathf.Clamp(movementSpeed + 0.1f, -50.0f, 0);
@@ -90,19 +90,13 @@ public class Car : MonoBehaviour
             {
                 movementSpeed = Mathf.Clamp(movementSpeed + 0.05f, 0, 50.0f);
             }
-            //transform.position += moveDirection * Time.deltaTime * movementSpeed;
-            // Debug.Log("Up pressed");
-            // Debug.Log("Up pressed, moving direction is: "+ moveDirection);
+     
 
         }
-        // else if (Input.GetKeyUp(KeyCode.UpArrow))
-        // {
-        //     movementSpeed = Mathf.Clamp(movementSpeed - 0.5f, 0, movementSpeed);
-        // }
+        
         else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            // transform.position -= transform.forward * Time.deltaTime * movementSpeed;
-            //  moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
+
             if (movementSpeed > 0)
             {
                 movementSpeed = Mathf.Clamp(movementSpeed - 0.1f, 0, 50.0f);
@@ -111,7 +105,7 @@ public class Car : MonoBehaviour
             {
                 movementSpeed = Mathf.Clamp(movementSpeed - 0.025f, -15.0f, 0);
             }
-            //transform.position += moveDirection * Time.deltaTime * movementSpeed;
+
         }
         else
         {
@@ -124,32 +118,24 @@ public class Car : MonoBehaviour
                 movementSpeed = Mathf.Clamp(movementSpeed + 0.025f, movementSpeed, 0);
             }
         }
-        // else if (Input.GetKeyUp(KeyCode.DownArrow))
-        // {
-        //     movementSpeed = 0.0f;
-        // }
+ 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            // transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
-            // transform.Rotate(Vector3.up * (-turnSpeed) * Time.deltaTime, Space.World);
+
             transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
-            // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
-            // Debug.Log("Left pressed, moving direction is: "+ moveDirection);
+
 
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            // transform.Rotate(0, Time.deltaTime * (-turnSpeed), 0);
-            // transform.Rotate(Vector3.up * (turnSpeed) * Time.deltaTime, Space.World);
+
             transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
-            // transform.rotation.eulerAngles.y = new Vector3(0.0f, Time.deltaTime*turnSpeed, 0.0f);
-            // Debug.Log("Right pressed, moving direction is: "+ moveDirection);
+
 
         }
 
-        //controller.Move(moveDirection * movementSpeed * Time.deltaTime);
         transform.position += moveDirection * Time.deltaTime * movementSpeed;
-        // Debug.Log("My position is: "+  transform.position);
+
     }
 
     void drawWareHouses(int totalWareHouses)
@@ -232,6 +218,17 @@ public class Car : MonoBehaviour
             }
         }
     }
+	void DisplayTime(float time){
+		if(time<0){
+			time = 0;
+		}
+		float finalTime = Mathf.Floor(time);
+		timer.text = "Time Remaining: " + finalTime + "s";
+	}
+	void DisplayScore(int score){
+		score_text.text = "Package Picked:" + score;
+	}
+	
 }
 
 
