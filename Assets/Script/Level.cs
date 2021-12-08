@@ -10,12 +10,14 @@ using UnityEngine.UI;
 public class Level : MonoBehaviour
 {
     public List<Vector3> warehouses_position;
+    public List<Vector3> waters_position;
     // Start is called before the first frame update
     private SortedList<Parcel, int> GlobalParcelsList;
 
     private int ItemNumber;
 
     public GameObject house_prefab;
+    public GameObject water_prefab;
 
     public Text CargoList;
     public Terrain terrain;
@@ -32,6 +34,7 @@ public class Level : MonoBehaviour
         GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
         GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
         drawWareHouses(3);
+        drawWaters(5);
     }
 
     // Update is called once per frame
@@ -120,6 +123,77 @@ public class Level : MonoBehaviour
             }
         }
     }
+
+    void drawWaters(int totalWaters) {
+        Debug.Log(111);
+        for (int i = 0; i < totalWaters; i++)
+        {
+
+            // record the x position and z position of the warehouse 
+            float water_x = 0;
+            float water_z = 0;
+            bool is_valid = false;
+            Vector3 sample_water_position = new Vector3(0.0f, 0.0f, 0.0f);
+            while (!is_valid) // try until a valid position is sampled
+            {
+                water_x = Random.Range(80, 400);
+                water_z = Random.Range(80, 400);
+                // Vector3 sample_wh_position = new Vector3(whx, 0.0f, whz);
+                sample_water_position.x = water_x;
+                sample_water_position.z = water_z;
+                float water_height = Terrain.activeTerrain.SampleHeight(sample_water_position);
+                sample_water_position.y = water_height;
+
+                // check if this position is already in the list
+                // if not in the list, check if two warehouses are too close to each other
+                if (!warehouses_position.Contains(sample_water_position) && !waters_position.Contains(sample_water_position))
+                {
+                    int itr = 0;
+                    for (itr = 0; itr < warehouses_position.Count; itr++)
+                    {
+                        // make sure the water is not very close to warehouses
+                        float distance = Vector3.Distance(sample_water_position, warehouses_position[itr]);
+                        if (distance < 30.0f)
+                        {
+                            break;
+                        }
+                    }
+
+                    // if the water position is valid after checking all warehouses positions 
+                    if (itr == warehouses_position.Count)
+                    {
+                        waters_position.Add(sample_water_position);
+                        is_valid = true;
+                    }
+                    is_valid = true;
+                }
+                //Debug.Log("Strap in loop");
+            }
+            //Debug.Log("get out the loop");
+            GameObject water = Instantiate(water_prefab, sample_water_position, Quaternion.identity);
+            water.name = "WATER" + i.ToString();
+            water.AddComponent<BoxCollider>();
+            // house.AddComponent<House>();
+            water.GetComponent<BoxCollider>().isTrigger = true;
+            water.GetComponent<BoxCollider>().size = new Vector3(3.0f, 3.0f, 3.0f);
+            water.AddComponent<ParticleSystem>();
+            // house.AddComponent<House>();
+            var ps = water.GetComponent<ParticleSystem>();
+            var ex = ps.externalForces;
+            var main = ps.main;
+            main.gravityModifier = 0.0f;
+            main.gravityModifierMultiplier = 0.0f;
+            ex.enabled = false;
+            main.startColor = new Color(0.0f, 1.0f, 0.0f, 0.7f);
+            ps.Play();
+
+            for (int x = 0; x < terrain.terrainData.size.x; x++)
+            {
+
+            }
+        }
+    }
+
 }
 
 
