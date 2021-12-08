@@ -1763,7 +1763,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warehouses_position: []
+  waters_position: []
   house_prefab: {fileID: 100006, guid: bff9f12c2b78a19499683923993e62cc, type: 3}
+  water_prefab: {fileID: 1475418326900088, guid: 340c1e8bd6d5c8c439f37f85e55bd6e3, type: 3}
   CargoList: {fileID: 684697609}
   terrain: {fileID: 1349534543}
 --- !u!4 &597133085
@@ -3757,7 +3759,7 @@ TerrainCollider:
   m_GameObject: {fileID: 1349534541}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 0}
+  m_TerrainData: {fileID: 15600000, guid: 02fac91b053240b46a2c8fdd0b98855f, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &1349534543
 Terrain:
