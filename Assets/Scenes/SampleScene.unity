@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4470232, g: 0.49691844, b: 0.5750722, a: 1}
+  m_IndirectSpecularColor: {r: 0.4470237, g: 0.49691898, b: 0.575073, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -908,8 +908,6 @@ MonoBehaviour:
   timer: {fileID: 784501355}
   timeValue: 0
   packageNumber: 0
-  warehouses_position: []
-  house_prefab: {fileID: 100006, guid: bff9f12c2b78a19499683923993e62cc, type: 3}
   hasTimeUsed: 0
   gradient:
     serializedVersion: 2
@@ -1764,7 +1762,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f3653cd17e07c41885b26788975cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warehouses_position: []
+  house_prefab: {fileID: 100006, guid: bff9f12c2b78a19499683923993e62cc, type: 3}
   CargoList: {fileID: 684697609}
+  terrain: {fileID: 1349534543}
 --- !u!4 &597133085
 Transform:
   m_ObjectHideFlags: 0

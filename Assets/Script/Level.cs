@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Buildings;
+using Parcels;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +45,7 @@ public class Level : MonoBehaviour
 
     void drawWareHouses(int totalWareHouses)
     {
+        Debug.Log(111);
         for (int i = 0; i < totalWareHouses; i++)
         {
 
@@ -112,34 +114,4 @@ public class Level : MonoBehaviour
     }
 }
 
-class Parcel
-{
-    public string name;
 
-    public int Id;
-
-    public float CountDown;
-
-
-    public Parcel(string name, int Id, float CountDown)
-    {
-        this.name = name;
-        this.Id = Id;
-        this.CountDown = CountDown;
-    }
-}
-
-class ParcelsTimeComparator : IComparer<Parcel>
-{
-    public int Compare(Parcel a, Parcel b)
-    {
-        if (a.CountDown == b.CountDown)
-        {
-            return a.Id - b.Id;
-        }
-        else
-        {
-            return (int)(a.CountDown - b.CountDown);
-        }
-    }
-}
