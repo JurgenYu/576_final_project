@@ -911,6 +911,36 @@ MonoBehaviour:
   warehouses_position: []
   house_prefab: {fileID: 100006, guid: bff9f12c2b78a19499683923993e62cc, type: 3}
   hasTimeUsed: 0
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.8018868, g: 0.11566352, b: 0.05799803, a: 1}
+    key1: {r: 0.014239851, g: 0.9056604, b: 0.078459986, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 1}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 14071
+    ctime1: 65342
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 13685
+    atime1: 25636
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 3
+  health_bar_fill: {fileID: 209205277}
 --- !u!136 &251123349
 CapsuleCollider:
   m_ObjectHideFlags: 0

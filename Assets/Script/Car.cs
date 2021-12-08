@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Buildings;
+using System.Linq;
 
 public class Car : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class Car : MonoBehaviour
     public List<Vector3> warehouses_position;
     public GameObject house_prefab;
 	public bool hasTimeUsed;
+	public Gradient gradient;
+	public Image health_bar_fill;
     //public float gravity = 20.0f;	
     void Start()
     {
@@ -54,6 +57,7 @@ public class Car : MonoBehaviour
         terrain_width = terrainSize.z;
         drawWareHouses(3);
 		slider.value = 1.0f;
+		health_bar_fill.color = gradient.Evaluate(1.0f);
     }
 
     // void OnTriggerEnter(Collider col) {
@@ -77,18 +81,19 @@ public class Car : MonoBehaviour
 		DisplayScore(packageNumber);
 		slider.value = player_health/2;
 		//Debug.Log("scroll bar size"+scroll_bar.GetComponent<Scrollbar>().size);
-		if (player_health < 0.5f)
-		{
-			ColorBlock cb = slider.colors;
-			cb.disabledColor = new Color(1.0f, 0.0f, 0.0f);
-			slider.colors = cb;
-		}
-		else
-		{
-			ColorBlock cb = slider.colors;
-			cb.disabledColor = new Color(0.0f, 1.0f, 0.25f);
-			slider.colors = cb;
-		}
+		//if (player_health < 0.5f)
+		//{
+			//ColorBlock cb = slider.colors;
+			//cb.disabledColor = new Color(1.0f, 0.0f, 0.0f);
+			//slider.colors = cb;
+		//}
+		//else
+		//{
+			//ColorBlock cb = slider.colors;
+			//cb.disabledColor = new Color(0.0f, 1.0f, 0.25f);
+			//slider.colors = cb;
+		//}
+		health_bar_fill.color = gradient.Evaluate(slider.value);
         float zdirection = -Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         moveDirection = new Vector3(xdirection, 0.0f, zdirection);
