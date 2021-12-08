@@ -846,10 +846,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.023623178
-  m_Height: 0.020084858
+  m_Radius: 0.016403941
+  m_Height: 0.040681634
   m_Direction: 1
-  m_Center: {x: -0.00034471598, y: 0.00016216839, z: 4.656813e-10}
+  m_Center: {x: -0.0003447151, y: -0.0031201886, z: -0.0006610715}
 --- !u!4 &251123351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 434314, guid: 6adbac25fbbce1941addef907602c539, type: 3}
