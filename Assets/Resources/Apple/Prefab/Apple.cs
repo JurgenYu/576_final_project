@@ -39,8 +39,10 @@ public class Apple : MonoBehaviour
         // (b) if the object collides with another apple, or its own turret that launched it (birth_turret), don't do anything
         // (c) if the object collides with anything else (e.g., terrain, a different turret), destroy the apple
         ////////////////////////////////////////////////
-		if(other.GetComponent<Collider>().name=="Claire"&& Turret.isAppleHitClaire==true){
-			car.GetComponent<Car>().player_health --;
+		if(other.GetComponent<Collider>().name=="Car_4_Blue"&& Turret.isAppleHitClaire==true){
+			car.GetComponent<Car>().player_health = car.GetComponent<Car>().player_health - 0.1f;
+			Debug.Log("car has been shooted");
+			Debug.Log(car.GetComponent<Car>().player_health);
 			Destroy(transform.gameObject);
 			Turret.isAppleHitClaire=false;
 		}else if(other.GetComponent<Collider>().name == "Apple" || other.GetComponent<Collider>().gameObject == birth_turret){

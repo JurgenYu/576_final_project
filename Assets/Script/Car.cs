@@ -22,7 +22,7 @@ public class Car : MonoBehaviour
     public float terrain_length;
     public float terrain_width;
 	internal float player_health = 3.0f;
-	public GameObject scroll_bar;
+	public Slider slider;
 	public Text score_text;             // text UI element showing the score
 	public Text timer;
 	public float timeValue;
@@ -44,15 +44,16 @@ public class Car : MonoBehaviour
 		timeValue = 60.0f;
         if (gameCanvas == null)
         {
-            Debug.Log("Doesn't exist");
+            //Debug.Log("Doesn't exist");
         }
         gameCanvas.enabled = false;
         terrain = Terrain.activeTerrain;
         Vector3 terrainSize = terrain.terrainData.size;
-        Debug.Log("Terrain size is: " + terrainSize);
+        //Debug.Log("Terrain size is: " + terrainSize);
         terrain_length = terrainSize.x;
         terrain_width = terrainSize.z;
         drawWareHouses(3);
+		slider.value = 1.0f;
     }
 
     // void OnTriggerEnter(Collider col) {
@@ -74,7 +75,20 @@ public class Car : MonoBehaviour
 		DisplayTime(timeValue);
 		//if picked up, package number ++;
 		DisplayScore(packageNumber);
- 
+		slider.value = player_health/2;
+		//Debug.Log("scroll bar size"+scroll_bar.GetComponent<Scrollbar>().size);
+		if (player_health < 0.5f)
+		{
+			ColorBlock cb = slider.colors;
+			cb.disabledColor = new Color(1.0f, 0.0f, 0.0f);
+			slider.colors = cb;
+		}
+		else
+		{
+			ColorBlock cb = slider.colors;
+			cb.disabledColor = new Color(0.0f, 1.0f, 0.25f);
+			slider.colors = cb;
+		}
         float zdirection = -Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
         moveDirection = new Vector3(xdirection, 0.0f, zdirection);
@@ -179,9 +193,9 @@ public class Car : MonoBehaviour
                     }
                     is_valid = true;
                 }
-                Debug.Log("Strap in loop");
+                //Debug.Log("Strap in loop");
             }
-            Debug.Log("get out the loop");
+            //Debug.Log("get out the loop");
             GameObject house = Instantiate(house_prefab, sample_wh_position, Quaternion.identity);
             house.name = "HOUSE" + i.ToString();
             house.AddComponent<BoxCollider>();
@@ -198,19 +212,7 @@ public class Car : MonoBehaviour
             main.startColor = new Color(0.0f, 1.0f, 0.0f, 0.7f);
             ps.Play();
             // house.AddComponent<House>();
-			scroll_bar.GetComponent<Scrollbar>().size = player_health;
-			if (player_health < 0.5f)
-			{
-				ColorBlock cb = scroll_bar.GetComponent<Scrollbar>().colors;
-				cb.disabledColor = new Color(1.0f, 0.0f, 0.0f);
-				scroll_bar.GetComponent<Scrollbar>().colors = cb;
-			}
-			else
-			{
-				ColorBlock cb = scroll_bar.GetComponent<Scrollbar>().colors;
-				cb.disabledColor = new Color(0.0f, 1.0f, 0.25f);
-				scroll_bar.GetComponent<Scrollbar>().colors = cb;
-			}
+			
 
             for (int x = 0; x < terrain_length; x++)
             {

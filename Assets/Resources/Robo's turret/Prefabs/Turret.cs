@@ -67,7 +67,8 @@ public class Turret : MonoBehaviour
 				for(int i=0; i<10; i++){
 					float old_t = t;
 					t = (claire_centroid + t * claire_volecity - projectile_starting_pos).magnitude / projectile_velocity;
-					Debug.Log(t);
+					
+					//Debug.Log("Display t" + t);
 					if(t - old_t < 0.003) break;
 					
 				}
