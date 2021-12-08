@@ -11,7 +11,7 @@ public class Level : MonoBehaviour
 {
     public List<Vector3> warehouses_position;
     // Start is called before the first frame update
-    private SortedList<Parcel, int> ParcelInTrunk;
+    private SortedList<Parcel, int> GlobalParcelsList;
 
     private int ItemNumber;
 
@@ -24,9 +24,13 @@ public class Level : MonoBehaviour
     void Start()
     {
         ItemNumber = 0;
-        ParcelInTrunk = new SortedList<Parcel, int>(new ParcelsTimeComparator());
-        ParcelInTrunk.Add(new Parcel("test object1", ++ItemNumber, 200.0f), ItemNumber);
-        ParcelInTrunk.Add(new Parcel("test object2", ++ItemNumber, 200.0f), ItemNumber);
+        GlobalParcelsList = Parcel.GetParcelsList();
+        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
+        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
+        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
+        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
+        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
+        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
         drawWareHouses(3);
     }
 
@@ -34,13 +38,17 @@ public class Level : MonoBehaviour
     void Update()
     {
         CargoList.text = "";
-        foreach (Parcel p in this.ParcelInTrunk.Keys)
+        foreach (Parcel p in this.GlobalParcelsList.Keys)
         {
-            string ParcelInfo = "Name: " + p.name + "\n" + "TimeLeft: " + p.CountDown + "\n";
+            string ParcelInfo = "Name: " + p.Name + "\n" + "Deliver In: " + (int)p.CountDown + "\n" + "Score: " + p.Score + "\n" + "\n";
             CargoList.text += ParcelInfo;
             p.CountDown -= Time.deltaTime;
         }
 
+    }
+
+    public void AddParcel(Parcel NewParcel) {
+        GlobalParcelsList.Add(NewParcel, ++ItemNumber);
     }
 
     void drawWareHouses(int totalWareHouses)
