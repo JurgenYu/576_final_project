@@ -22,7 +22,7 @@ public class Apple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		car = GameObject.Find("Car_4_Blue");
+		car = GameObject.Find("CarObj");
         if (Time.time - birth_time > 10.0f)  // apples live for 10 sec
         {
             Destroy(transform.gameObject);
@@ -39,7 +39,7 @@ public class Apple : MonoBehaviour
         // (b) if the object collides with another apple, or its own turret that launched it (birth_turret), don't do anything
         // (c) if the object collides with anything else (e.g., terrain, a different turret), destroy the apple
         ////////////////////////////////////////////////
-		if(other.GetComponent<Collider>().name=="Car_4_Blue"&& Turret.isAppleHitClaire==true){
+		if(other.GetComponent<Collider>().name=="CarObj"&& Turret.isAppleHitClaire==true){
 			car.GetComponent<Car>().player_health = car.GetComponent<Car>().player_health - 0.1f;
 			Debug.Log("car has been shooted");
 			Debug.Log(car.GetComponent<Car>().player_health);

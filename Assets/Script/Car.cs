@@ -134,10 +134,7 @@ public class Car : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-
             transform.Rotate(0, Time.deltaTime * turnSpeed, 0);
-
-
         }
 
         moveDirection *= movementSpeed;
@@ -162,6 +159,26 @@ public class Car : MonoBehaviour
     {
         score_text.text = "Package Picked:" + score;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        if (other.GetComponent<Collider>().name.Contains("WATER"))
+        {
+            Debug.Log("Car collide with water");
+        }else if (other.GetComponent<Collider>().name.Contains("HOUSE")) {
+            Debug.Log("Car collide with house");
+        }
+    }
+
+    //  void OnCollisionEnter(Collision other)
+    // {
+    //     Debug.Log(other.name);
+    //     if (other.GetComponent<Collider>().name.Contains("HOUSE"))
+    //     {
+    //         Debug.Log("Car collide with house");
+    //     }
+    // }
 
 }
 
