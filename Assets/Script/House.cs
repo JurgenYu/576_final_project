@@ -45,7 +45,6 @@ namespace Buildings
                     Parcel p = Parcel.GetRandomParcel(); ;
                     try
                     {
-                        Debug.Log(p);
                         HouseParcelsList.Add(p, ++ItemNumber);
                     }
                     catch (System.Exception e)

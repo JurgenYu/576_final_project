@@ -27,12 +27,6 @@ public class Level : MonoBehaviour
     {
         ItemNumber = 0;
         GlobalParcelsList = Parcel.GetParcelsList();
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
         drawWareHouses(3);
         drawWaters(5);
     }
@@ -56,7 +50,6 @@ public class Level : MonoBehaviour
 
     void drawWareHouses(int totalWareHouses)
     {
-        Debug.Log(111);
         for (int i = 0; i < totalWareHouses; i++)
         {
 
@@ -125,7 +118,6 @@ public class Level : MonoBehaviour
     }
 
     void drawWaters(int totalWaters) {
-        Debug.Log(111);
         for (int i = 0; i < totalWaters; i++)
         {
 

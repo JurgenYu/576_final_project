@@ -73,7 +73,6 @@ public class Turret : MonoBehaviour
 					
 				}
 				var future_claire_pos = claire_centroid + CarObj.transform.forward * CarObj.GetComponent<Car>().movementSpeed * t;
-                Debug.Log(CarObj.GetComponent<Car>().moveDirection);
                 // Debug.Log(future_claire_pos);
 				shooting_direction = (future_claire_pos - turret_centroid).normalized;
 				//target_position + t * target_velocity; 
