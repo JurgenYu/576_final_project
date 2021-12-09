@@ -36,9 +36,9 @@ public class Level : MonoBehaviour
         Score = 0;
         ItemNumber = 0;
         GlobalParcelsList = Parcel.GetParcelsList();
-        game_level = GameObject.Find("GamesLevels").GetComponent<StartSceneKeyControl>();
-        drawWareHouses(game_level.warehouses_num);
-        drawWaters(game_level.water_num);
+        game_level = GameObject.Find("GamesLevels")? GameObject.Find("GamesLevels").GetComponent<StartSceneKeyControl>():null;
+        drawWareHouses(game_level? game_level.warehouses_num:5);
+        drawWaters(game_level? game_level.water_num:5);
     }
 
     // Update is called once per frame
@@ -78,6 +78,7 @@ public class Level : MonoBehaviour
 
     void drawWareHouses(int totalWareHouses)
     {
+        Debug.Log(totalWareHouses);
         for (int i = 0; i < totalWareHouses; i++)
         {
 
