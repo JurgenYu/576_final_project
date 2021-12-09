@@ -33,6 +33,7 @@ namespace Buildings
                     level.AddParcel(new Parcel(p.Name, p.Score, p.CountDown));
                 }
                 HouseParcelsList = Parcel.GetParcelsList();
+                // Debug.Log(HouseParcelsList.Count);
             }
         }
 
