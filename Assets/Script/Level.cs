@@ -103,8 +103,8 @@ public class Level : MonoBehaviour
             house.name = "HOUSE" + i.ToString();
             house.AddComponent<BoxCollider>();
             house.AddComponent<House>();
-            house.GetComponent<BoxCollider>().isTrigger = true;
-            house.GetComponent<BoxCollider>().size = new Vector3(3.0f, 3.0f, 3.0f);
+            // house.GetComponent<BoxCollider>().isTrigger = true;
+            house.GetComponent<BoxCollider>().size = new Vector3(5.0f, 5.0f, 5.0f);
             house.AddComponent<ParticleSystem>();
             var ps = house.GetComponent<ParticleSystem>();
             var ex = ps.externalForces;
@@ -193,6 +193,15 @@ public class Level : MonoBehaviour
             }
         }
     }
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log(other.name);
+    //     if (other.GetComponent<Collider>().name == "CarObj" && water_prefab.GetComponent<Collider>().name.Contains("WATER"))
+    //     {
+    //         Debug.Log("Water Collide with Car");
+    //     }
+    // }
 
 }
 
