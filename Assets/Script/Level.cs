@@ -12,7 +12,7 @@ public class Level : MonoBehaviour
     public List<Vector3> warehouses_position;
     public List<Vector3> waters_position;
     // Start is called before the first frame update
-    private SortedList<Parcel, int> GlobalParcelsList;
+    public SortedList<Parcel, int> GlobalParcelsList;
 
     private int ItemNumber;
 
@@ -44,7 +44,8 @@ public class Level : MonoBehaviour
 
     }
 
-    public void AddParcel(Parcel NewParcel) {
+    public void AddParcel(Parcel NewParcel)
+    {
         GlobalParcelsList.Add(NewParcel, ++ItemNumber);
     }
 
@@ -96,8 +97,10 @@ public class Level : MonoBehaviour
             house.name = "HOUSE" + i.ToString();
             house.AddComponent<BoxCollider>();
             house.AddComponent<House>();
-            // house.GetComponent<BoxCollider>().isTrigger = true;
+            house.AddComponent<CapsuleCollider>();
             house.GetComponent<BoxCollider>().size = new Vector3(5.0f, 5.0f, 5.0f);
+            house.GetComponent<CapsuleCollider>().radius = 10.0f;
+            house.GetComponent<CapsuleCollider>().isTrigger = true;
             house.AddComponent<ParticleSystem>();
             var ps = house.GetComponent<ParticleSystem>();
             var ex = ps.externalForces;
@@ -117,7 +120,8 @@ public class Level : MonoBehaviour
         }
     }
 
-    void drawWaters(int totalWaters) {
+    void drawWaters(int totalWaters)
+    {
         for (int i = 0; i < totalWaters; i++)
         {
 

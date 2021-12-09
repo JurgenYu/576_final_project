@@ -19,17 +19,18 @@ namespace Buildings
             NextUpdate = 1;
             HouseParcelsList = Parcel.GetParcelsList();
             ItemNumber = 0;
-            level = GetComponent<Level>();
+            level = GameObject.Find("Level").GetComponent<Level>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log(other.name);
-            if (other.name == "Car_4_Blue")
+            if (other.name == "CarObj")
             {
                 foreach (Parcel p in this.HouseParcelsList.Keys)
                 {
-                    level.AddParcel(p);
+                    // Debug.Log(p);
+                    level.AddParcel(new Parcel(p.Name, p.Score, p.CountDown));
                 }
                 HouseParcelsList = Parcel.GetParcelsList();
             }

@@ -81,7 +81,7 @@ public class Car : MonoBehaviour
         DisplayScore(packageNumber);
         slider.value = player_health / 2;
         health_bar_fill.color = gradient.Evaluate(slider.value);
-        
+
 
         moveDirection = transform.forward;
 
@@ -166,7 +166,9 @@ public class Car : MonoBehaviour
         if (other.GetComponent<Collider>().name.Contains("WATER"))
         {
             Debug.Log("Car collide with water");
-        }else if (other.GetComponent<Collider>().name.Contains("HOUSE")) {
+        }
+        else if (other.GetComponent<Collider>().name.Contains("HOUSE"))
+        {
             Debug.Log("Car collide with house");
         }
     }
