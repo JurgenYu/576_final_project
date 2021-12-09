@@ -21,6 +21,7 @@ public class Level : MonoBehaviour
 
     public Text CargoList;
     public Terrain terrain;
+    public StartSceneKeyControl game_level;
 
 
     void Start()
@@ -33,8 +34,9 @@ public class Level : MonoBehaviour
         GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
         GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
         GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        drawWareHouses(3);
-        drawWaters(5);
+        game_level = GameObject.Find("GamesLevels").GetComponent<StartSceneKeyControl>();
+        drawWareHouses(game_level.warehouses_num);
+        drawWaters(game_level.water_num);
     }
 
     // Update is called once per frame

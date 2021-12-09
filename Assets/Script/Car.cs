@@ -67,8 +67,6 @@ public class Car : MonoBehaviour
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;
-
-
         }
         else
         {
