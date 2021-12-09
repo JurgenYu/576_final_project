@@ -14,7 +14,6 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     public SortedList<Parcel, int> GlobalParcelsList;
 
-    private int ItemNumber;
 
     public GameObject house_prefab;
     public GameObject water_prefab;
@@ -22,9 +21,15 @@ public class Level : MonoBehaviour
     public Text CargoList;
     public Terrain terrain;
 
+    private int ItemNumber;
+
+    private int TotalNumberDelivered;
+    private int Score;
+
 
     void Start()
     {
+        Score = 0;
         ItemNumber = 0;
         GlobalParcelsList = Parcel.GetParcelsList();
         drawWareHouses(3);
@@ -188,6 +193,15 @@ public class Level : MonoBehaviour
 
             }
         }
+    }
+
+    public void Delivered() {
+        TotalNumberDelivered += GlobalParcelsList.Count;
+        foreach (Parcel p in GlobalParcelsList.Keys) {
+            Score += p.Score;
+        }
+        Debug.Log(Score);
+        GlobalParcelsList.Clear();
     }
 
     // private void OnTriggerEnter(Collider other)
