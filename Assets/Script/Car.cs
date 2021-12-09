@@ -41,7 +41,7 @@ public class Car : MonoBehaviour
         player_health = 2.0f;
         hasTimeUsed = false;
         packageNumber = 0;
-        timeValue = 60.0f;
+        timeValue = 10.0f;
         if (gameCanvas == null)
         {
             //Debug.Log("Doesn't exist");
