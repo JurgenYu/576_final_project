@@ -24,7 +24,7 @@ public class ExitButton : MonoBehaviour
 			mainCamera.enabled = true;
 			cameraForCar.enabled = false;
 		}
-		ExitPanel.gameObject.SetActive (true);
+		ExitPanel.gameObject.SetActive (car.GetComponent<Car>().hasTimeUsed);
     }
 	public void onClickExitButton(){
 		Debug.Log("Exit Game");

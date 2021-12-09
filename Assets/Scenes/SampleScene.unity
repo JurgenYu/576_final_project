@@ -2565,7 +2565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &919256629
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3029,7 +3029,7 @@ Transform:
   m_GameObject: {fileID: 1086213841}
   m_LocalRotation: {x: 0.073912784, y: 0.7032332, z: -0.073912784, w: 0.7032332}
   m_LocalPosition: {x: -0.05, y: 0.011, z: 0.0001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.006125, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 251123351}
   m_RootOrder: 4
@@ -3049,7 +3049,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086213841}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -4605,14 +4605,14 @@ RectTransform:
   m_GameObject: {fileID: 1891822415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.91254, z: 1}
   m_Children: []
   m_Father: {fileID: 1657231029}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 509, y: 191}
+  m_AnchoredPosition: {x: 507.40027, y: 190.63}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891822417

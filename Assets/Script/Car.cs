@@ -46,7 +46,7 @@ public class Car : MonoBehaviour
         {
             //Debug.Log("Doesn't exist");
         }
-        gameCanvas.enabled = false;
+        //gameCanvas.enabled = false;
         terrain = Terrain.activeTerrain;
         Vector3 terrainSize = terrain.terrainData.size;
         //Debug.Log("Terrain size is: " + terrainSize);
