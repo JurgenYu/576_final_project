@@ -163,6 +163,17 @@ public class Car : MonoBehaviour
         score_text.text = "Package Picked:" + score;
     }
 
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log("Car collide with object" + other.name);
+    //     if (other.name.Contains("WATER"))
+    //     {
+
+    //     }
+    // }
+
+    
+
 }
 
 
