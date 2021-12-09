@@ -41,8 +41,8 @@ public class Apple : MonoBehaviour
         ////////////////////////////////////////////////
 		if(other.GetComponent<Collider>().name=="CarObj"&& Turret.isAppleHitClaire==true){
 			car.GetComponent<Car>().player_health = car.GetComponent<Car>().player_health - 0.1f;
-			Debug.Log("car has been shooted");
-			Debug.Log(car.GetComponent<Car>().player_health);
+			// Debug.Log("car has been shooted");
+			// Debug.Log(car.GetComponent<Car>().player_health);
 			Destroy(transform.gameObject);
 			Turret.isAppleHitClaire=false;
 		}else if(other.GetComponent<Collider>().name == "Apple" || other.GetComponent<Collider>().gameObject == birth_turret){

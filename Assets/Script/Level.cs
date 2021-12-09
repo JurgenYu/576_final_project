@@ -12,9 +12,8 @@ public class Level : MonoBehaviour
     public List<Vector3> warehouses_position;
     public List<Vector3> waters_position;
     // Start is called before the first frame update
-    private SortedList<Parcel, int> GlobalParcelsList;
+    public SortedList<Parcel, int> GlobalParcelsList;
 
-    private int ItemNumber;
 
     public GameObject house_prefab;
     public GameObject water_prefab;
@@ -22,17 +21,17 @@ public class Level : MonoBehaviour
     public Text CargoList;
     public Terrain terrain;
 
+    private int ItemNumber;
+
+    private int TotalNumberDelivered;
+    private int Score;
+
 
     void Start()
     {
+        Score = 0;
         ItemNumber = 0;
         GlobalParcelsList = Parcel.GetParcelsList();
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
-        GlobalParcelsList.Add(Parcel.GetRandomParcel(), ++ItemNumber);
         drawWareHouses(3);
         drawWaters(5);
     }
@@ -50,13 +49,13 @@ public class Level : MonoBehaviour
 
     }
 
-    public void AddParcel(Parcel NewParcel) {
+    public void AddParcel(Parcel NewParcel)
+    {
         GlobalParcelsList.Add(NewParcel, ++ItemNumber);
     }
 
     void drawWareHouses(int totalWareHouses)
     {
-        Debug.Log(111);
         for (int i = 0; i < totalWareHouses; i++)
         {
 
@@ -103,8 +102,10 @@ public class Level : MonoBehaviour
             house.name = "HOUSE" + i.ToString();
             house.AddComponent<BoxCollider>();
             house.AddComponent<House>();
-            // house.GetComponent<BoxCollider>().isTrigger = true;
+            house.AddComponent<CapsuleCollider>();
             house.GetComponent<BoxCollider>().size = new Vector3(5.0f, 5.0f, 5.0f);
+            house.GetComponent<CapsuleCollider>().radius = 10.0f;
+            house.GetComponent<CapsuleCollider>().isTrigger = true;
             house.AddComponent<ParticleSystem>();
             var ps = house.GetComponent<ParticleSystem>();
             var ex = ps.externalForces;
@@ -124,8 +125,8 @@ public class Level : MonoBehaviour
         }
     }
 
-    void drawWaters(int totalWaters) {
-        Debug.Log(111);
+    void drawWaters(int totalWaters)
+    {
         for (int i = 0; i < totalWaters; i++)
         {
 
@@ -192,6 +193,15 @@ public class Level : MonoBehaviour
 
             }
         }
+    }
+
+    public void Delivered() {
+        TotalNumberDelivered += GlobalParcelsList.Count;
+        foreach (Parcel p in GlobalParcelsList.Keys) {
+            Score += p.Score;
+        }
+        Debug.Log(Score);
+        GlobalParcelsList.Clear();
     }
 
     // private void OnTriggerEnter(Collider other)

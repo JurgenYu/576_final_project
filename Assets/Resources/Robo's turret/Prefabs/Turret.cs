@@ -45,10 +45,10 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject claire = GameObject.Find("CarObj");
-        if (claire == null)
+        GameObject CarObj = GameObject.Find("CarObj");
+        if (CarObj == null)
             Debug.LogError("Error: could not find the game character 'Claire' in the scene. Did you delete the model Claire from your scene?");
-        Vector3 claire_centroid = claire.GetComponent<CapsuleCollider>().bounds.center;
+        Vector3 claire_centroid = CarObj.GetComponent<CapsuleCollider>().bounds.center;
         Vector3 turret_centroid = GetComponent<Collider>().bounds.center;
         direction_from_turret_to_claire = claire_centroid - turret_centroid;
         direction_from_turret_to_claire.Normalize();
@@ -57,7 +57,7 @@ public class Turret : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast( turret_centroid, direction_from_turret_to_claire, out hit, Mathf.Infinity))
         {
-            if (hit.collider.gameObject == claire)
+            if (hit.collider.gameObject == CarObj)
             {
                 ////////////////////////////////////////////////
                 // WRITE CODE HERE:
@@ -72,7 +72,8 @@ public class Turret : MonoBehaviour
 					if(t - old_t < 0.003) break;
 					
 				}
-				var future_claire_pos = claire_centroid + claire.GetComponent<Car>().moveDirection*claire.GetComponent<Car>().movementSpeed * t;
+				var future_claire_pos = claire_centroid + CarObj.transform.forward * CarObj.GetComponent<Car>().movementSpeed * t;
+                // Debug.Log(future_claire_pos);
 				shooting_direction = (future_claire_pos - turret_centroid).normalized;
 				//target_position + t * target_velocity; 
 		
