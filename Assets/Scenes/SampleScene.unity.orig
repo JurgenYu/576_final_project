@@ -1665,9 +1665,12 @@ MonoBehaviour:
   water_prefab: {fileID: 1475418326900088, guid: 340c1e8bd6d5c8c439f37f85e55bd6e3, type: 3}
   CargoList: {fileID: 684697609}
   terrain: {fileID: 1349534543}
+<<<<<<< HEAD
   game_level: {fileID: 0}
+=======
   ScoreText: {fileID: 1208445424}
   Prompt: {fileID: 74649987}
+>>>>>>> HouseScript
 --- !u!4 &597133085
 Transform:
   m_ObjectHideFlags: 0
@@ -3430,7 +3433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8cba3361c8f7724e8899289f1efa8cc, type: 3}
+<<<<<<< HEAD
+--- !u!1 &1185770423
+=======
 --- !u!1 &1208445422
+>>>>>>> HouseScript
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3438,16 +3445,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 1185770425}
+  - component: {fileID: 1185770424}
+  m_Layer: 0
+  m_Name: GameManager
+=======
   - component: {fileID: 1208445423}
   - component: {fileID: 1208445425}
   - component: {fileID: 1208445424}
   m_Layer: 5
   m_Name: Score
+>>>>>>> HouseScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!114 &1185770424
+=======
 --- !u!224 &1208445423
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3468,11 +3485,27 @@ RectTransform:
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1208445424
+>>>>>>> HouseScript
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1185770423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed639459f6ec804ebc98e13db76819d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExitPanel: {fileID: 334408692}
+  car: {fileID: 752690145}
+  mainCamera: {fileID: 963194227}
+  cameraForCar: {fileID: 1086213845}
+  hasGameEnd: 0
+--- !u!4 &1185770425
+Transform:
+=======
   m_GameObject: {fileID: 1208445422}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3503,10 +3536,12 @@ MonoBehaviour:
   m_Text: 
 --- !u!222 &1208445425
 CanvasRenderer:
+>>>>>>> HouseScript
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1185770423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3515,6 +3550,10 @@ CanvasRenderer:
   m_Father: {fileID: 0}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  m_GameObject: {fileID: 1208445422}
+  m_CullTransparentMesh: 1
+>>>>>>> HouseScript
 --- !u!1001 &1240716571
 PrefabInstance:
   m_ObjectHideFlags: 0

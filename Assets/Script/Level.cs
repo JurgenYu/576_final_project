@@ -21,6 +21,9 @@ public class Level : MonoBehaviour
     public Text CargoList;
     public Terrain terrain;
     public StartSceneKeyControl game_level;
+    public Text ScoreText;
+    public Text Prompt;
+    private int NextUpdate;
 
     private int ItemNumber;
 
@@ -48,12 +51,29 @@ public class Level : MonoBehaviour
             CargoList.text += ParcelInfo;
             p.CountDown -= Time.deltaTime;
         }
+        ScoreText.text = "Score: " + Score;
+        if (Time.time > NextUpdate) {
+            Prompt.text = "";
+        }
 
     }
 
     public void AddParcel(Parcel NewParcel)
     {
+        Prompt.text = "New Deliveries Picked Up!";
         GlobalParcelsList.Add(NewParcel, ++ItemNumber);
+        NextUpdate = Mathf.FloorToInt(Time.time + 5);
+    }
+
+    public void Delivered() {
+        TotalNumberDelivered += GlobalParcelsList.Count;
+        Prompt.text = "Delivered " + GlobalParcelsList.Count + " Packages";
+        NextUpdate = Mathf.FloorToInt(Time.time + 5);
+        foreach (Parcel p in GlobalParcelsList.Keys) {
+            Score += p.Score;
+        }
+        Debug.Log(Score);
+        GlobalParcelsList.Clear();
     }
 
     void drawWareHouses(int totalWareHouses)
@@ -197,14 +217,7 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void Delivered() {
-        TotalNumberDelivered += GlobalParcelsList.Count;
-        foreach (Parcel p in GlobalParcelsList.Keys) {
-            Score += p.Score;
-        }
-        Debug.Log(Score);
-        GlobalParcelsList.Clear();
-    }
+    
 
     // private void OnTriggerEnter(Collider other)
     // {
