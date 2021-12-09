@@ -45,7 +45,7 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject claire = GameObject.Find("Car_4_Blue");
+        GameObject claire = GameObject.Find("CarObj");
         if (claire == null)
             Debug.LogError("Error: could not find the game character 'Claire' in the scene. Did you delete the model Claire from your scene?");
         Vector3 claire_centroid = claire.GetComponent<CapsuleCollider>().bounds.center;

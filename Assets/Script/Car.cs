@@ -14,10 +14,9 @@ public class Car : MonoBehaviour
     public GameObject car;
     public Vector3 moveDirection;
     // public float turnSpeed = 10.0f;
-    public float turnSpeed = 50.0f;
+    public float turnSpeed = 100.0f;
     public float walking_velocity;
     public float movementSpeed;
-    public float rotationSpeed = 10.0f;
     public Canvas gameCanvas;
     public Terrain terrain;
     public float terrain_length;
@@ -64,18 +63,7 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(transform.position.y <0){
-        //transform.position.y = 0;
-        //}
-        if (transform.position.y > 0.0f)
-        {
-            //Vector3 lower_character = moveDirection * movementSpeed * Time.deltaTime;
-            //lower_character.y = -100f; // hack to force her down
-            //controller.Move(lower_character);
-            float x = transform.position.x;
-            float z = transform.position.z;
-            transform.position = new Vector3(x, 1.5f, z);
-        }
+        CharacterController controller = GetComponent<CharacterController>();
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;
@@ -92,11 +80,10 @@ public class Car : MonoBehaviour
         //if picked up, package number ++;
         DisplayScore(packageNumber);
         slider.value = player_health / 2;
-
         health_bar_fill.color = gradient.Evaluate(slider.value);
-        float zdirection = -Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
-        float xdirection = Mathf.Cos(Mathf.Deg2Rad * transform.rotation.eulerAngles.y);
-        moveDirection = new Vector3(xdirection, 0.0f, zdirection);
+        
+
+        moveDirection = transform.forward;
 
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -153,7 +140,10 @@ public class Car : MonoBehaviour
 
         }
 
-        transform.position += moveDirection * Time.deltaTime * movementSpeed;
+        moveDirection *= movementSpeed;
+        moveDirection.y -= 480f * Time.deltaTime;
+
+        controller.SimpleMove(moveDirection);
 
     }
 
