@@ -170,17 +170,10 @@ public class Car : MonoBehaviour
         else if (other.GetComponent<Collider>().name.Contains("HOUSE"))
         {
             Debug.Log("Car collide with house");
+        } else if (other.gameObject.name.Equals("Baker_house")) {
+            GameObject.Find("Level").GetComponent<Level>().Delivered();
         }
     }
-
-    //  void OnCollisionEnter(Collision other)
-    // {
-    //     Debug.Log(other.name);
-    //     if (other.GetComponent<Collider>().name.Contains("HOUSE"))
-    //     {
-    //         Debug.Log("Car collide with house");
-    //     }
-    // }
 
 }
 
