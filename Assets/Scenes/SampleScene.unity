@@ -700,7 +700,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 151567859}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1185770424}
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_MethodName: onClickExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &151567859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,7 +1686,7 @@ GameObject:
   - component: {fileID: 678094584}
   - component: {fileID: 678094583}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GamePanelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2130,7 +2142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 734809914}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1185770424}
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_MethodName: onClickPlayAgain
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: sampleScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &734809914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,6 +2272,7 @@ MonoBehaviour:
   timeValue: 0
   packageNumber: 0
   hasTimeUsed: 0
+  isHealthZero: 0
   gradient:
     serializedVersion: 2
     key0: {r: 0.8018868, g: 0.11566352, b: 0.05799803, a: 1}
@@ -2352,9 +2377,9 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -4169,7 +4194,7 @@ GameObject:
   - component: {fileID: 1657231027}
   - component: {fileID: 1657231026}
   m_Layer: 5
-  m_Name: StatusInfo
+  m_Name: InGameStatusInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

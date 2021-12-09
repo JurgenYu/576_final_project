@@ -28,6 +28,7 @@ public class Car : MonoBehaviour
     public float timeValue;
     public int packageNumber;
     public bool hasTimeUsed;
+	public bool isHealthZero;
     public Gradient gradient;
     public Image health_bar_fill;
     //public float gravity = 20.0f;	
@@ -37,11 +38,12 @@ public class Car : MonoBehaviour
         moveDirection = new Vector3(0.0f, 0.0f, 0.0f);
         walking_velocity = 2.0f;
         movementSpeed = 0.0f;
-        gameCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        player_health = 2.0f;
+        //gameCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        player_health = 20.0f;
         hasTimeUsed = false;
         packageNumber = 0;
         timeValue = 100.0f;
+		isHealthZero = false;
         if (gameCanvas == null)
         {
             //Debug.Log("Doesn't exist");
@@ -67,8 +69,6 @@ public class Car : MonoBehaviour
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;
-
-
         }
         else
         {
@@ -79,6 +79,9 @@ public class Car : MonoBehaviour
         DisplayTime(timeValue);
         //if picked up, package number ++;
         DisplayScore(packageNumber);
+		if(player_health == 0){
+			isHealthZero = true;
+		}
         slider.value = player_health / 2;
         health_bar_fill.color = gradient.Evaluate(slider.value);
 

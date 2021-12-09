@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ExitButton : MonoBehaviour
 {
@@ -24,11 +26,14 @@ public class ExitButton : MonoBehaviour
 			mainCamera.enabled = true;
 			cameraForCar.enabled = false;
 		}
-		ExitPanel.gameObject.SetActive (car.GetComponent<Car>().hasTimeUsed);
+		ExitPanel.gameObject.SetActive ((car.GetComponent<Car>().hasTimeUsed));
     }
 	public void onClickExitButton(){
 		Debug.Log("Exit Game");
 		Application.Quit();
 		
+	}
+	public void onClickPlayAgain(string sceneName){
+		SceneManager.LoadScene (sceneName);
 	}
 }
