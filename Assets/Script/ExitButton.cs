@@ -26,8 +26,8 @@ public class ExitButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("hasTimeUsed"+ " "+ car.GetComponent<Car>().hasTimeUsed);
-		Debug.Log("isHealthZero" + " " + car.GetComponent<Car>().isHealthZero);
+        // Debug.Log("hasTimeUsed"+ " "+ car.GetComponent<Car>().hasTimeUsed);
+		// Debug.Log("isHealthZero" + " " + car.GetComponent<Car>().isHealthZero);
 		if(car.GetComponent<Car>().hasTimeUsed || car.GetComponent<Car>().isHealthZero){
 			mainCamera.enabled = true;
 			cameraForCar.enabled = false;
@@ -37,7 +37,7 @@ public class ExitButton : MonoBehaviour
 		PausePanel.gameObject.SetActive(isPauseClicked);
     }
 	public void onClickExitButton(){
-		Debug.Log("Exit Game");
+		// Debug.Log("Exit Game");
 		Application.Quit();
 		
 	}

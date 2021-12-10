@@ -92,7 +92,7 @@ public class Car : MonoBehaviour
 		if(player_health < 0){
 			isHealthZero = true;
 		}
-		Debug.Log("player health" + " " + player_health);
+		// Debug.Log("player health" + " " + player_health);
 		slider.minValue = 0;
         slider.value = player_health / 2;
         health_bar_fill.color = gradient.Evaluate(slider.value);
