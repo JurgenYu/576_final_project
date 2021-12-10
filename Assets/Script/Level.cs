@@ -38,7 +38,7 @@ public class Level : MonoBehaviour
     private int ItemNumber;
 
     private int TotalNumberDelivered;
-    private int Score;
+    public int Score;
 
 
     void Start()

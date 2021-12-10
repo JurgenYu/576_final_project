@@ -46,7 +46,7 @@ public class Car : MonoBehaviour
         walking_velocity = 2.0f;
         movementSpeed = 0.0f;
         //gameCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        player_health = 2.0f;
+        player_health = 3.0f;
         hasTimeUsed = false;
         packageNumber = 0;
         timeValue = 100.0f;
@@ -94,7 +94,7 @@ public class Car : MonoBehaviour
 		}
 		// Debug.Log("player health" + " " + player_health);
 		slider.minValue = 0;
-        slider.value = player_health / 2;
+        slider.value = player_health / 3.0f;
         health_bar_fill.color = gradient.Evaluate(slider.value);
 
 
@@ -181,6 +181,7 @@ public class Car : MonoBehaviour
         if (other.GetComponent<Collider>().name.Contains("WATER"))
         {
             Debug.Log("Car collide with water");
+			player_health = player_health - 0.1f;
 			audio_source.PlayOneShot(carHitWaterAudio,1.0F);
         }
         else if (other.GetComponent<Collider>().name.Contains("HOUSE"))

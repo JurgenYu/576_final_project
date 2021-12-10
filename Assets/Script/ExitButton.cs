@@ -14,12 +14,15 @@ public class ExitButton : MonoBehaviour
 	public bool hasGameEnd;
 	public GameObject PausePanel;
 	public bool isPauseClicked;
+	public Text score_text;
+	public GameObject Level;
 	
     void Start()
     {
         car = GameObject.Find("CarObj");
 		hasGameEnd = false;
 		isPauseClicked = false;
+		Level = GameObject.Find("Level");
 		
     }
 
@@ -34,6 +37,9 @@ public class ExitButton : MonoBehaviour
 			hasGameEnd = true;
 		}
 		ExitPanel.gameObject.SetActive (hasGameEnd);
+		if(hasGameEnd){
+			score_text.text = "Your Score" + ":" + " " + Level.GetComponent<Level>().Score;
+		}
 		PausePanel.gameObject.SetActive(isPauseClicked);
     }
 	public void onClickExitButton(){
