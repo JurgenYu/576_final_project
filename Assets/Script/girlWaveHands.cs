@@ -19,14 +19,13 @@ public class girlWaveHands : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(car.transform.position, destinationHouse.transform.position);
+		Debug.Log(car.GetComponent<Car>().hasDelivered);
 		if(car.GetComponent<Car>().hasDelivered){
 			animation_controller.SetBool("isCongrats", true);
-		}else if(dist<50.0f){
+			
+		}else if(dist<100.0f){
 			animation_controller.SetBool("isWaving", true);
-			
-		}else{
-			
-		}
+		}else{}
 		
     }
 }

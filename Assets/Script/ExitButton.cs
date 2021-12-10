@@ -12,11 +12,14 @@ public class ExitButton : MonoBehaviour
 	public Camera mainCamera;
 	public Camera cameraForCar;
 	public bool hasGameEnd;
+	public GameObject PausePanel;
+	public bool isPauseClicked;
 	
     void Start()
     {
         car = GameObject.Find("CarObj");
 		hasGameEnd = false;
+		isPauseClicked = false;
 		
     }
 
@@ -30,7 +33,8 @@ public class ExitButton : MonoBehaviour
 			cameraForCar.enabled = false;
 			hasGameEnd = true;
 		}
-		ExitPanel.gameObject.SetActive (false);
+		ExitPanel.gameObject.SetActive (hasGameEnd);
+		PausePanel.gameObject.SetActive(isPauseClicked);
     }
 	public void onClickExitButton(){
 		Debug.Log("Exit Game");
@@ -42,8 +46,10 @@ public class ExitButton : MonoBehaviour
 	}
 	public void pauseGame(){
 		Time.timeScale = 0;
+		isPauseClicked = true;
 	}
 	public void continueGame(){
 		Time.timeScale = 1;
+		isPauseClicked = false;
 	}
 }
