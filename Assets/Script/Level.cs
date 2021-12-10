@@ -56,7 +56,7 @@ public class Level : MonoBehaviour
 
         // fixed turret position
         turrets_position = new List<Vector3>() {
-            new Vector3(300.0f, 0.0f, 750.0f), new Vector3(650.0f, 0.0f, 700.0f),
+            new Vector3(300.0f, 0.0f, 820.0f), new Vector3(650.0f, 0.0f, 700.0f),
             new Vector3(900.0f, 0.0f, 450.0f), new Vector3(600.0f, 0.0f, 150.0f),
             new Vector3(600.0f, 0.0f, 200.0f)
         };
@@ -253,21 +253,25 @@ public class Level : MonoBehaviour
 
         int turret_id = turrets_position.Count;
         // randomly draw turrets near warehouses
+        // record the x position and z position of the warehouse 
+        Vector3[] positions = new Vector3[]{new Vector3(8.0f, 0.0f, 8.0f), new Vector3(-8.0f, 0.0f, 8.0f), new Vector3(-8.0f, 0.0f, -8.0f), new Vector3(8.0f, 0.0f, -8.0f)};
         for (int i = 0; i < actual_warehouses_position_in_world.Count; i++)
         {
-            // record the x position and z position of the warehouse 
-            rand_index = Random.Range(0, 4);
+            bool[] isCreated = new bool[4];
             int num_turret_near_warehouses = Random.Range(0, 4);
-            Vector3[] positions = new Vector3[]{new Vector3(10.0f, 0.0f, 15.0f), new Vector3(-10.0f, 0.0f, 15.0f), new Vector3(-10.0f, 0.0f, -15.0f), new Vector3(10.0f, 0.0f, -15.0f)};
             for (int j = 0; j < num_turret_near_warehouses; j++) {
-                GameObject turret = Instantiate(turret_prefab, warehouses_position[rand_index] + new Vector3(10.0f, 0.0f, 15.0f), Quaternion.identity);
-                turret.name = "TURRET" + (turret_id).ToString();
+                rand_index = Random.Range(0, 4);
+                while(isCreated[rand_index]) {
+                    rand_index = Random.Range(0, 4);
+                    isCreated[rand_index] = true;
+                }
+                GameObject turret = Instantiate(turret_prefab, warehouses_position[i] + positions[rand_index], Quaternion.identity);
+                turret.name = "TURRET" + (turret_id + j).ToString();
             }
             turret_id += num_turret_near_warehouses;
         }
     }
 
-    
 
     // private void OnTriggerEnter(Collider other)
     // {
