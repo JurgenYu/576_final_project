@@ -189,7 +189,7 @@ public class Car : MonoBehaviour
             Debug.Log("Car collide with house");
 			audio_source.PlayOneShot(carPickupParcelAudio,1.0F);
         } else if (other.gameObject.name.Equals("Baker_house")) {
-			hasDelivered = true;
+			GameObject.Find("AGIA_anime_girl").GetComponent<girlWaveHands>().Congrate();
             GameObject.Find("Level").GetComponent<Level>().Delivered();
 			audio_source.PlayOneShot(carArrivedDestinationAudio,1.0F);
         }
