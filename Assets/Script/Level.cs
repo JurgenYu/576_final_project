@@ -4,6 +4,7 @@ using Buildings;
 using Parcels;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 
 
@@ -195,6 +196,8 @@ public class Level : MonoBehaviour
             house.GetComponent<CapsuleCollider>().radius = 10.0f;
             house.GetComponent<CapsuleCollider>().isTrigger = true;
             house.AddComponent<ParticleSystem>();
+            house.AddComponent<NavMeshObstacle>();
+            house.GetComponent<NavMeshObstacle>().carving = true;
             var ps = house.GetComponent<ParticleSystem>();
             var ex = ps.externalForces;
             var main = ps.main;
@@ -228,6 +231,8 @@ public class Level : MonoBehaviour
             water.GetComponent<BoxCollider>().isTrigger = true;
             water.GetComponent<BoxCollider>().size = new Vector3(3.0f, 3.0f, 3.0f);
             water.AddComponent<ParticleSystem>();
+            water.AddComponent<NavMeshObstacle>();
+            water.GetComponent<NavMeshObstacle>().carving = true;
             // house.AddComponent<House>();
             var ps = water.GetComponent<ParticleSystem>();
             var ex = ps.externalForces;
@@ -244,11 +249,14 @@ public class Level : MonoBehaviour
         Debug.Log("Total turret number is :" + totalTurrets);
         bool[] isVisited = new bool[warehouses_position.Count];
         int rand_index = 0;
+        
 
         // draw fixed position turrets
         for (int i = 0; i < turrets_position.Count; i++) {
             GameObject turret = Instantiate(turret_prefab, turrets_position[i], Quaternion.identity);
             turret.name = "TURRET" + i.ToString();
+            turret.AddComponent<NavMeshObstacle>();
+            turret.GetComponent<NavMeshObstacle>().carving = true;
         }
 
         int turret_id = turrets_position.Count;
@@ -270,6 +278,7 @@ public class Level : MonoBehaviour
             }
             turret_id += num_turret_near_warehouses;
         }
+        
     }
 
 
