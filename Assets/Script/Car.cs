@@ -39,7 +39,7 @@ public class Car : MonoBehaviour
         walking_velocity = 2.0f;
         movementSpeed = 0.0f;
         //gameCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        player_health = 20.0f;
+        player_health = 2.0f;
         hasTimeUsed = false;
         packageNumber = 0;
         timeValue = 100.0f;
@@ -79,9 +79,11 @@ public class Car : MonoBehaviour
         DisplayTime(timeValue);
         //if picked up, package number ++;
         DisplayScore(packageNumber);
-		if(player_health == 0){
+		if(player_health < 0){
 			isHealthZero = true;
 		}
+		Debug.Log("player health" + " " + player_health);
+		slider.minValue = 0;
         slider.value = player_health / 2;
         health_bar_fill.color = gradient.Evaluate(slider.value);
 
