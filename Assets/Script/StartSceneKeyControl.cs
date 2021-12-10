@@ -12,6 +12,7 @@ public class StartSceneKeyControl : MonoBehaviour
     public Button hard;
     public int warehouses_num;
     public int water_num;
+    public int new_added_turret_num;
     public GameObject game_level;
 
 
@@ -20,6 +21,7 @@ public class StartSceneKeyControl : MonoBehaviour
     {
         warehouses_num = 0;
         water_num = 0;
+        new_added_turret_num = 0;
         start = GameObject.Find("Canvas/Panel/StartButton").GetComponent<Button>();
         easy = GameObject.Find("Canvas/Panel/EasyButton").GetComponent<Button>();
         medium = GameObject.Find("Canvas/Panel/MediumButton").GetComponent<Button>();
@@ -50,18 +52,21 @@ public class StartSceneKeyControl : MonoBehaviour
         Debug.Log("easy button clicked");
         warehouses_num = 2;
         water_num = 4;
+        new_added_turret_num = 2;
     }
 
     void mediumButtonClicked() {
         Debug.Log("medium button clicked");
         warehouses_num = 4;
         water_num = 6;
+        new_added_turret_num = 4;
     }
 
     void hardButtonClicked() {
         Debug.Log("hard button clicked");
-        warehouses_num = 6;
+        warehouses_num = 9;
         water_num = 8;
+        new_added_turret_num = 9;
     }
     
 }

@@ -28,8 +28,10 @@ public class Turret : MonoBehaviour
         projectile_template = (GameObject)Resources.Load("Apple/Prefab/Apple", typeof(GameObject));  // projectile prefab
         if (projectile_template == null)
             Debug.LogError("Error: could not find the apple prefab in the project! Did you delete/move the prefab from your project?");
-        shooting_delay = 0.5f;  
-        projectile_velocity = 5.0f;
+        // shooting_delay = 0.5f;  
+        // projectile_velocity = 5.0f;
+        shooting_delay = 0.2f;  
+        projectile_velocity = 10.0f;
         direction_from_turret_to_claire = new Vector3(0.0f, 0.0f, 0.0f);
         projectile_starting_pos = new Vector3(0.0f, 0.0f, 0.0f);
 		//future_direction = new Vector3(0.0f, 0.0f, 0.0f);

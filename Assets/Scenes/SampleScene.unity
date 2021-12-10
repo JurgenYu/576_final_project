@@ -1690,7 +1690,7 @@ MonoBehaviour:
   warehouses_position: []
   waters_position: []
   turrets_position: []
-  turret_prefab: {fileID: 0}
+  turret_prefab: {fileID: 939335178, guid: 29f393efdc386ee41aee6077912722cf, type: 3}
   house_prefab: {fileID: 100006, guid: bff9f12c2b78a19499683923993e62cc, type: 3}
   water_prefab: {fileID: 1475418326900088, guid: 340c1e8bd6d5c8c439f37f85e55bd6e3, type: 3}
   CargoList: {fileID: 684697609}
