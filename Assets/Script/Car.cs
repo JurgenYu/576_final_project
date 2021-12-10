@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
     public Terrain terrain;
     public float terrain_length;
     public float terrain_width;
-    internal float player_health = 3.0f;
+    internal float player_health = 500.0f;
     public Slider slider;
     public Text score_text;             // text UI element showing the score
     public Text timer;
@@ -29,6 +29,7 @@ public class Car : MonoBehaviour
     public int packageNumber;
     public bool hasTimeUsed;
 	public bool isHealthZero;
+	public bool hasDelivered;
     public Gradient gradient;
     public Image health_bar_fill;
     //public float gravity = 20.0f;	
@@ -44,6 +45,7 @@ public class Car : MonoBehaviour
         packageNumber = 0;
         timeValue = 100.0f;
 		isHealthZero = false;
+		hasDelivered = false;
         if (gameCanvas == null)
         {
             //Debug.Log("Doesn't exist");
@@ -176,6 +178,7 @@ public class Car : MonoBehaviour
         {
             Debug.Log("Car collide with house");
         } else if (other.gameObject.name.Equals("Baker_house")) {
+			hasDelivered = true;
             GameObject.Find("Level").GetComponent<Level>().Delivered();
         }
     }
