@@ -11,10 +11,11 @@ public class Level : MonoBehaviour
 {
     public List<Vector3> warehouses_position;
     public List<Vector3> waters_position;
+    public List<Vector3> turrets_position;
     // Start is called before the first frame update
     public SortedList<Parcel, int> GlobalParcelsList;
 
-
+    public GameObject turret_prefab;
     public GameObject house_prefab;
     public GameObject water_prefab;
 
@@ -203,6 +204,87 @@ public class Level : MonoBehaviour
             water.AddComponent<ParticleSystem>();
             // house.AddComponent<House>();
             var ps = water.GetComponent<ParticleSystem>();
+            var ex = ps.externalForces;
+            var main = ps.main;
+            main.gravityModifier = 0.0f;
+            main.gravityModifierMultiplier = 0.0f;
+            ex.enabled = false;
+            main.startColor = new Color(0.0f, 1.0f, 0.0f, 0.7f);
+            ps.Play();
+
+            for (int x = 0; x < terrain.terrainData.size.x; x++)
+            {
+
+            }
+        }
+    }
+
+    void drawTurrets(int totalTurrets) {
+        for (int i = 0; i < totalTurrets; i++)
+        {
+
+            // record the x position and z position of the warehouse 
+            float turret_x = 0;
+            float turret_z = 0;
+            bool is_valid = false;
+            Vector3 sample_turret_position = new Vector3(0.0f, 0.0f, 0.0f);
+            while (!is_valid) // try until a valid position is sampled
+            {
+                turret_x = Random.Range(80, 400);
+                turret_z = Random.Range(80, 400);
+                // Vector3 sample_wh_position = new Vector3(whx, 0.0f, whz);
+                sample_turret_position.x = turret_x;
+                sample_turret_position.z = turret_z;
+                float turret_height = Terrain.activeTerrain.SampleHeight(sample_turret_position);
+                sample_turret_position.y = turret_height;
+
+                // check if this position is already in the list
+                // if not in the list, check if two warehouses are too close to each other
+                if (!warehouses_position.Contains(sample_turret_position) && !waters_position.Contains(sample_turret_position))
+                {
+                    int wh_itr = 0;
+                    for (wh_itr = 0; wh_itr < warehouses_position.Count; wh_itr++)
+                    {
+                        // make sure the water is not very close to warehouses
+                        float turret_house_distance = Vector3.Distance(sample_turret_position, warehouses_position[wh_itr]);
+                        if (turret_house_distance < 30.0f)
+                        {
+                            break;
+                        }
+                    }
+
+                    int water_itr = 0;
+                    for (water_itr = 0; water_itr < waters_position.Count; water_itr++) 
+                    {
+                        // make sure the water is not very close to warehouses
+                        float turret_water_distance = Vector3.Distance(sample_turret_position, waters_position[water_itr]);
+                        if (turret_water_distance < 30.0f)
+                        {
+                            break;
+                        }
+                    }
+
+
+                    // if the water position is valid after checking all warehouses positions 
+                    if (wh_itr == warehouses_position.Count && water_itr == waters_position.Count)
+                    {
+                        turrets_position.Add(sample_turret_position);
+                        is_valid = true;
+                    }
+                    is_valid = true;
+                }
+                //Debug.Log("Strap in loop");
+            }
+            //Debug.Log("get out the loop");
+            GameObject turret = Instantiate(turret_prefab, sample_turret_position, Quaternion.identity);
+            turret.name = "TURRET" + i.ToString();
+            turret.AddComponent<BoxCollider>();
+            // house.AddComponent<House>();
+            turret.GetComponent<BoxCollider>().isTrigger = true;
+            turret.GetComponent<BoxCollider>().size = new Vector3(3.0f, 3.0f, 3.0f);
+            turret.AddComponent<ParticleSystem>();
+            // house.AddComponent<House>();
+            var ps = turret.GetComponent<ParticleSystem>();
             var ex = ps.externalForces;
             var main = ps.main;
             main.gravityModifier = 0.0f;
