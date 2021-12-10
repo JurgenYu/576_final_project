@@ -56,8 +56,8 @@ public class Level : MonoBehaviour
 
         // fixed turret position
         turrets_position = new List<Vector3>() {
-            new Vector3(300.0f, 0.0f, 750.0f), new Vector3(750.0f, 0.0f, 700.0f), new Vector3(650.0f, 0.0f, 700.0f),
-            new Vector3(800.0f, 0.0f, 650.0f), new Vector3(900.0f, 0.0f, 450.0f), new Vector3(600.0f, 0.0f, 150.0f),
+            new Vector3(300.0f, 0.0f, 750.0f), new Vector3(650.0f, 0.0f, 700.0f),
+            new Vector3(900.0f, 0.0f, 450.0f), new Vector3(600.0f, 0.0f, 150.0f),
             new Vector3(600.0f, 0.0f, 200.0f)
         };
 
