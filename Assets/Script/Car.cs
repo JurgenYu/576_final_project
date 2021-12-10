@@ -32,6 +32,12 @@ public class Car : MonoBehaviour
 	public bool hasDelivered;
     public Gradient gradient;
     public Image health_bar_fill;
+	public AudioClip carHitWaterAudio;
+	public AudioClip carArrivedDestinationAudio;
+	public AudioClip carPickupParcelAudio;
+	public AudioClip carShotByAppleAudio;
+	public AudioSource audio_source;
+	
     //public float gravity = 20.0f;	
     void Start()
     {
@@ -58,6 +64,8 @@ public class Car : MonoBehaviour
         terrain_width = terrainSize.z;
         slider.value = 1.0f;
         health_bar_fill.color = gradient.Evaluate(1.0f);
+		audio_source = GetComponent<AudioSource>();
+		audio_source.playOnAwake = false;
     }
 
     // void OnTriggerEnter(Collider col) {
@@ -173,13 +181,16 @@ public class Car : MonoBehaviour
         if (other.GetComponent<Collider>().name.Contains("WATER"))
         {
             Debug.Log("Car collide with water");
+			audio_source.PlayOneShot(carHitWaterAudio,1.0F);
         }
         else if (other.GetComponent<Collider>().name.Contains("HOUSE"))
         {
             Debug.Log("Car collide with house");
+			audio_source.PlayOneShot(carPickupParcelAudio,1.0F);
         } else if (other.gameObject.name.Equals("Baker_house")) {
 			hasDelivered = true;
             GameObject.Find("Level").GetComponent<Level>().Delivered();
+			audio_source.PlayOneShot(carArrivedDestinationAudio,1.0F);
         }
     }
 

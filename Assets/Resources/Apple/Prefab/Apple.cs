@@ -40,6 +40,7 @@ public class Apple : MonoBehaviour
         // (c) if the object collides with anything else (e.g., terrain, a different turret), destroy the apple
         ////////////////////////////////////////////////
 		if(other.GetComponent<Collider>().name=="CarObj"&& Turret.isAppleHitClaire==true){
+			car.GetComponent<Car>().audio_source.PlayOneShot(car.GetComponent<Car>().carShotByAppleAudio,1.0F);
 			car.GetComponent<Car>().player_health = car.GetComponent<Car>().player_health - 0.1f;
 			// Debug.Log("car has been shooted");
 			// Debug.Log(car.GetComponent<Car>().player_health);
