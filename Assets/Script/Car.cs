@@ -49,7 +49,7 @@ public class Car : MonoBehaviour
         player_health = 3.0f;
         hasTimeUsed = false;
         packageNumber = 0;
-        timeValue = 100.0f;
+        timeValue = 180.0f;
 		isHealthZero = false;
 		hasDelivered = false;
         if (gameCanvas == null)
