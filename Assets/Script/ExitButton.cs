@@ -40,4 +40,10 @@ public class ExitButton : MonoBehaviour
 	public void onClickPlayAgain(string sceneName){
 		SceneManager.LoadScene (sceneName);
 	}
+	public void pauseGame(){
+		Time.timeScale = 0;
+	}
+	public void continueGame(){
+		Time.timeScale = 1;
+	}
 }
