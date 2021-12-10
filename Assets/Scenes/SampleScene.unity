@@ -1104,7 +1104,7 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290989669}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: a272794d50704f649b1328dfd5f0167a, type: 2}
   m_TreeDistance: 5000
@@ -1737,6 +1737,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warehouses_position: []
   waters_position: []
+  turrets_position: []
+  turret_prefab: {fileID: 0}
   house_prefab: {fileID: 100006, guid: bff9f12c2b78a19499683923993e62cc, type: 3}
   water_prefab: {fileID: 1475418326900088, guid: 340c1e8bd6d5c8c439f37f85e55bd6e3, type: 3}
   CargoList: {fileID: 684697609}
@@ -3959,7 +3961,7 @@ Terrain:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349534541}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 02fac91b053240b46a2c8fdd0b98855f, type: 2}
   m_TreeDistance: 5000
