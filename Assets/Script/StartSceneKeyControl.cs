@@ -37,10 +37,11 @@ public class StartSceneKeyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void startButtonClicked() {
+    void startButtonClicked()
+    {
         Debug.Log("start button clicked");
         SceneManager.LoadScene("Assets/Scenes/SampleScene.unity", LoadSceneMode.Single);
         Scene gameScene = SceneManager.GetSceneByPath("Assets/Scenes/SampleScene.unity");
@@ -48,25 +49,41 @@ public class StartSceneKeyControl : MonoBehaviour
         // SceneManager.SetActiveScene(gameScene);
     }
 
-    void easyButtonClicked() {
+    void Restore()
+    {
+        easy.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        medium.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        hard.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+    }
+
+    void easyButtonClicked()
+    {
         Debug.Log("easy button clicked");
         warehouses_num = 2;
         water_num = 4;
         new_added_turret_num = 2;
+        Restore();
+        easy.transform.localScale *= 1.1f;
     }
 
-    void mediumButtonClicked() {
+    void mediumButtonClicked()
+    {
         Debug.Log("medium button clicked");
         warehouses_num = 4;
         water_num = 6;
         new_added_turret_num = 4;
+        Restore();
+        medium.transform.localScale *= 1.1f;
     }
 
-    void hardButtonClicked() {
+    void hardButtonClicked()
+    {
         Debug.Log("hard button clicked");
         warehouses_num = 9;
         water_num = 8;
         new_added_turret_num = 9;
+        Restore();
+        hard.transform.localScale *= 1.1f;
     }
-    
+
 }
