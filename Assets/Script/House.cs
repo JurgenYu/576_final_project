@@ -22,6 +22,7 @@ namespace Buildings
             level = GameObject.Find("Level").GetComponent<Level>();
         }
 
+
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log(other.name);
@@ -56,6 +57,15 @@ namespace Buildings
                 }
             }
 
+        }
+
+        public bool HasPackage() {
+            return HouseParcelsList.Count > 0;
+        }
+
+        public void Clear() {
+            Debug.Log("Cleared");
+            HouseParcelsList.Clear();
         }
 
     }
