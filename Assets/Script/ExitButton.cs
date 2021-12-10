@@ -12,21 +12,25 @@ public class ExitButton : MonoBehaviour
 	public Camera mainCamera;
 	public Camera cameraForCar;
 	public bool hasGameEnd;
+	
     void Start()
     {
         car = GameObject.Find("CarObj");
+		hasGameEnd = false;
 		
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(car.GetComponent<Car>().hasTimeUsed);
-		if(car.GetComponent<Car>().hasTimeUsed){
+        Debug.Log("hasTimeUsed"+ " "+ car.GetComponent<Car>().hasTimeUsed);
+		Debug.Log("isHealthZero" + " " + car.GetComponent<Car>().isHealthZero);
+		if(car.GetComponent<Car>().hasTimeUsed || car.GetComponent<Car>().isHealthZero){
 			mainCamera.enabled = true;
 			cameraForCar.enabled = false;
+			hasGameEnd = true;
 		}
-		ExitPanel.gameObject.SetActive ((car.GetComponent<Car>().hasTimeUsed));
+		ExitPanel.gameObject.SetActive (hasGameEnd);
     }
 	public void onClickExitButton(){
 		Debug.Log("Exit Game");
@@ -35,5 +39,11 @@ public class ExitButton : MonoBehaviour
 	}
 	public void onClickPlayAgain(string sceneName){
 		SceneManager.LoadScene (sceneName);
+	}
+	public void pauseGame(){
+		Time.timeScale = 0;
+	}
+	public void continueGame(){
+		Time.timeScale = 1;
 	}
 }
