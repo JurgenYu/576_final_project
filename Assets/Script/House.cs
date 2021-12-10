@@ -42,7 +42,7 @@ namespace Buildings
             if (Time.time > NextUpdate && HouseParcelsList.Count < 2)
             {
                 NextUpdate = Mathf.FloorToInt(Time.time) + 1;
-                if (Random.Range(0, 100) > 10)
+                if (Random.Range(0, 100) > 90)
                 {
                     Parcel p = Parcel.GetRandomParcel(); ;
                     try
