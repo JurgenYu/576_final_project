@@ -66,7 +66,7 @@ public class Turret : MonoBehaviour
                 // implement deflection shooting
 				//future_direction = claire_centroid;
 				isAppleHitClaire = true;
-				for(int i=0; i<10; i++){
+				for(int i=0; i<1000; i++){
 					float old_t = t;
 					t = (claire_centroid + t * claire_volecity - projectile_starting_pos).magnitude / projectile_velocity;
 					
