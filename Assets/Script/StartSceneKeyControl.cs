@@ -13,7 +13,7 @@ public class StartSceneKeyControl : MonoBehaviour
     public int warehouses_num;
     public int water_num;
     public int new_added_turret_num;
-    public GameObject game_level;
+    // public GameObject game_level;
 
 
     // Start is called before the first frame update
@@ -26,12 +26,12 @@ public class StartSceneKeyControl : MonoBehaviour
         easy = GameObject.Find("Canvas/Panel/EasyButton").GetComponent<Button>();
         medium = GameObject.Find("Canvas/Panel/MediumButton").GetComponent<Button>();
         hard = GameObject.Find("Canvas/Panel/HardButton").GetComponent<Button>();
-        game_level = GameObject.Find("GamesLevels");
+        // game_level = GameObject.Find("GamesLevels");
         start.onClick.AddListener(startButtonClicked);
         easy.onClick.AddListener(easyButtonClicked);
         medium.onClick.AddListener(mediumButtonClicked);
         hard.onClick.AddListener(hardButtonClicked);
-        GameObject.DontDestroyOnLoad(game_level);
+        // GameObject.DontDestroyOnLoad(game_level);
     }
 
     // Update is called once per frame
@@ -46,7 +46,14 @@ public class StartSceneKeyControl : MonoBehaviour
         SceneManager.LoadScene("Assets/Scenes/SampleScene.unity", LoadSceneMode.Single);
         Scene gameScene = SceneManager.GetSceneByPath("Assets/Scenes/SampleScene.unity");
         Debug.Log("Scene name is: " + gameScene.name);
+        
         // SceneManager.SetActiveScene(gameScene);
+    }
+
+    private void OnDisable() {
+        PlayerPrefs.SetInt("warehouses_number", warehouses_num);
+        PlayerPrefs.SetInt("water_number", water_num);
+        PlayerPrefs.SetInt("turrets_number", new_added_turret_num);
     }
 
     void Restore()

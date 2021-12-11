@@ -31,7 +31,7 @@ public class Level : MonoBehaviour
 
     public Text CargoList;
     public Terrain terrain;
-    public StartSceneKeyControl game_level;
+    // public StartSceneKeyControl game_level;
     public Text ScoreText;
     public Text Prompt;
     private int NextUpdate;
@@ -41,13 +41,18 @@ public class Level : MonoBehaviour
     private int TotalNumberDelivered;
     public int Score;
 
+    private int warehouses_number;
+
+    private int water_number;
+    private int turrets_number;
+
 
     void Start()
     {
         Score = 0;
         ItemNumber = 0;
         GlobalParcelsList = Parcel.GetParcelsList();
-        game_level = GameObject.Find("GamesLevels") ? GameObject.Find("GamesLevels").GetComponent<StartSceneKeyControl>() : null;
+        // game_level = GameObject.Find("GamesLevels") ? GameObject.Find("GamesLevels").GetComponent<StartSceneKeyControl>() : null;
         warehouses_position = new List<Vector3>() {
         new Vector3(100.0f, 0.0f, 100.0f), new Vector3(100.0f + 100.0f, 0.0f, 400.0f), new Vector3(100.0f + 150.0f, 0.0f ,700.0f + 150.0f),
         new Vector3(400.0f, 0.0f, 100.0f + 200.0f), new Vector3(400.0f + 150.0f, 0.0f, 400.0f + 50.0f), new Vector3(400.0f, 0.0f, 700.0f + 100.0f),
@@ -62,9 +67,17 @@ public class Level : MonoBehaviour
             new Vector3(600.0f, 0.0f, 200.0f)
         };
 
-        drawWareHouses(game_level ? game_level.warehouses_num : 9);
-        drawWaters(game_level ? game_level.water_num : 9);
-        drawTurrets(game_level ? game_level.new_added_turret_num : 9);
+        drawWareHouses(warehouses_number);
+        drawWaters(water_number);
+        drawTurrets(turrets_number);
+    }
+
+    private void OnEnable()
+    {
+        warehouses_number = PlayerPrefs.GetInt("warehouses_number");
+        water_number = PlayerPrefs.GetInt("water_number");
+        turrets_number = PlayerPrefs.GetInt("turrets_number");
+        Debug.Log(warehouses_number);
     }
 
     // Update is called once per frame

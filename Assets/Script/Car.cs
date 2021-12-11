@@ -99,6 +99,7 @@ public class Car : MonoBehaviour
 
 
         moveDirection = transform.forward;
+        // movementSpeed = controller.velocity.magnitude;
 
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))

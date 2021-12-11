@@ -59,11 +59,18 @@ namespace Buildings
 
         }
 
-        public bool HasPackage() {
-            return HouseParcelsList.Count > 0;
+        public bool HasPackage()
+        {
+            if (HouseParcelsList != null)
+            {
+
+                return HouseParcelsList.Count > 0;
+            }
+            return false;
         }
 
-        public void Clear() {
+        public void Clear()
+        {
             Debug.Log("Cleared");
             HouseParcelsList.Clear();
         }
