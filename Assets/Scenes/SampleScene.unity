@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4470237, g: 0.49691898, b: 0.575073, a: 1}
+  m_IndirectSpecularColor: {r: 0.4428279, g: 0.49198174, b: 0.5717515, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1620,7 +1620,6 @@ MonoBehaviour:
   water_prefab: {fileID: 1475418326900088, guid: 340c1e8bd6d5c8c439f37f85e55bd6e3, type: 3}
   CargoList: {fileID: 684697609}
   terrain: {fileID: 1349534543}
-  game_level: {fileID: 0}
   ScoreText: {fileID: 1208445424}
   Prompt: {fileID: 74649987}
   Score: 0
@@ -2433,8 +2432,8 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 1.1
+  m_Range: 21.25
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2472,7 +2471,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2490,13 +2489,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.39553767, y: -0.14767383, z: 0.1488494, w: 0.89419585}
-  m_LocalPosition: {x: -2.97, y: 7.99, z: 5.15}
+  m_LocalRotation: {x: 0.49881786, y: 0.28512266, z: -0.10658239, w: 0.8114962}
+  m_LocalPosition: {x: -2.97, y: 548.7, z: 5.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 48.706, y: -12.813, z: 13.083}
+  m_LocalEulerAnglesHint: {x: 60.5, y: 46.37, z: 13.083}
 --- !u!1001 &706567007
 PrefabInstance:
   m_ObjectHideFlags: 0
