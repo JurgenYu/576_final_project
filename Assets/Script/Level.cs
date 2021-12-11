@@ -15,7 +15,7 @@ public class Level : MonoBehaviour
     //     new Vector3(400.0f, 0.0f, 100.0f), new Vector3(400.0f, 0.0f, 400.0f), new Vector3(400.0f, 0.0f, 700.0f),
     //     new Vector3(700.0f, 0.0f, 100.0f), new Vector3(700.0f, 0.0f, 400.0f), new Vector3(700.0f, 0.0f, 700.0f)
     // };
-    
+
     public List<Vector3> warehouses_position;
 
     // public List<Vector3> vector3s = new List<Vector3>() { new Vector2(1, 0), new Vector3(2, 9), new Vector3(5, 7,10) };
@@ -47,11 +47,11 @@ public class Level : MonoBehaviour
         Score = 0;
         ItemNumber = 0;
         GlobalParcelsList = Parcel.GetParcelsList();
-        game_level = GameObject.Find("GamesLevels")? GameObject.Find("GamesLevels").GetComponent<StartSceneKeyControl>():null;
-        warehouses_position = new List<Vector3>() { 
+        game_level = GameObject.Find("GamesLevels") ? GameObject.Find("GamesLevels").GetComponent<StartSceneKeyControl>() : null;
+        warehouses_position = new List<Vector3>() {
         new Vector3(100.0f, 0.0f, 100.0f), new Vector3(100.0f + 100.0f, 0.0f, 400.0f), new Vector3(100.0f + 150.0f, 0.0f ,700.0f + 150.0f),
         new Vector3(400.0f, 0.0f, 100.0f + 200.0f), new Vector3(400.0f + 150.0f, 0.0f, 400.0f + 50.0f), new Vector3(400.0f, 0.0f, 700.0f + 100.0f),
-        new Vector3(700.0f + 50.0f, 0.0f, 100.0f + 150.0f), new Vector3(700.0f + 150.0f, 0.0f, 400.0f + 150.0f), new Vector3(700.0f, 0.0f, 700.0f)
+        new Vector3(700.0f + 50.0f, 0.0f, 100.0f + 150.0f), new Vector3(920.0f, 0.0f, 500.0f), new Vector3(700.0f, 0.0f, 700.0f)
     };
         Debug.Log("Length of walehouses is: " + warehouses_position.Count);
 
@@ -62,9 +62,9 @@ public class Level : MonoBehaviour
             new Vector3(600.0f, 0.0f, 200.0f)
         };
 
-        drawWareHouses(game_level? game_level.warehouses_num:5);
-        drawWaters(game_level? game_level.water_num:5);
-        drawTurrets(game_level? game_level.new_added_turret_num:5);
+        drawWareHouses(game_level ? game_level.warehouses_num : 9);
+        drawWaters(game_level ? game_level.water_num : 9);
+        drawTurrets(game_level ? game_level.new_added_turret_num : 9);
     }
 
     // Update is called once per frame
@@ -78,7 +78,8 @@ public class Level : MonoBehaviour
             p.CountDown -= Time.deltaTime;
         }
         ScoreText.text = "Score: " + Score;
-        if (Time.time > NextUpdate) {
+        if (Time.time > NextUpdate)
+        {
             Prompt.text = "";
         }
 
@@ -91,11 +92,13 @@ public class Level : MonoBehaviour
         NextUpdate = Mathf.FloorToInt(Time.time + 5);
     }
 
-    public void Delivered() {
+    public void Delivered()
+    {
         TotalNumberDelivered += GlobalParcelsList.Count;
         Prompt.text = "Delivered " + GlobalParcelsList.Count + " Packages";
         NextUpdate = Mathf.FloorToInt(Time.time + 5);
-        foreach (Parcel p in GlobalParcelsList.Keys) {
+        foreach (Parcel p in GlobalParcelsList.Keys)
+        {
             Score += p.Score;
         }
         Debug.Log(Score);
@@ -174,21 +177,19 @@ public class Level : MonoBehaviour
     //     }
     // }
 
-     void drawWareHouses(int totalWareHouses)
+    void drawWareHouses(int totalWareHouses)
     {
         Debug.Log("Total warehouses number is :" + totalWareHouses);
-        bool[] isVisited = new bool[warehouses_position.Count];
-        int rand_index = 0;
-        for (int i = 0; i < totalWareHouses; i++)
+        SortedSet<int> Random_index = new SortedSet<int>();
+        while (Random_index.Count != totalWareHouses)
         {
-            rand_index = Random.Range(0, warehouses_position.Count);
-            while (isVisited[rand_index]) {
-                isVisited[rand_index]  = true;
-                rand_index = Random.Range(0, warehouses_position.Count);
-            }
-            actual_warehouses_position_in_world.Add(warehouses_position[rand_index]);
-            GameObject house = Instantiate(house_prefab, warehouses_position[rand_index], Quaternion.identity);
-            house.name = "HOUSE" + i.ToString();
+            Random_index.Add(Random.Range(0, 9));
+        }
+        foreach (int index in Random_index)
+        {
+            actual_warehouses_position_in_world.Add(warehouses_position[index]);
+            GameObject house = Instantiate(house_prefab, warehouses_position[index], Quaternion.identity);
+            house.name = "HOUSE" + index.ToString();
             house.AddComponent<BoxCollider>();
             house.AddComponent<House>();
             house.AddComponent<CapsuleCollider>();
@@ -220,8 +221,9 @@ public class Level : MonoBehaviour
         {
             // record the x position and z position of the warehouse 
             rand_index = Random.Range(0, warehouses_position.Count);
-            while (isVisited[rand_index]) {
-                isVisited[rand_index]  = true;
+            while (isVisited[rand_index])
+            {
+                isVisited[rand_index] = true;
                 rand_index = Random.Range(0, warehouses_position.Count);
             }
             GameObject water = Instantiate(water_prefab, warehouses_position[rand_index] + new Vector3(30.0f, 0.0f, 0.0f), Quaternion.identity);
@@ -245,14 +247,16 @@ public class Level : MonoBehaviour
         }
     }
 
-    void drawTurrets(int totalTurrets) {
+    void drawTurrets(int totalTurrets)
+    {
         Debug.Log("Total turret number is :" + totalTurrets);
         bool[] isVisited = new bool[warehouses_position.Count];
         int rand_index = 0;
-        
+
 
         // draw fixed position turrets
-        for (int i = 0; i < turrets_position.Count; i++) {
+        for (int i = 0; i < turrets_position.Count; i++)
+        {
             GameObject turret = Instantiate(turret_prefab, turrets_position[i], Quaternion.identity);
             turret.name = "TURRET" + i.ToString();
             turret.AddComponent<NavMeshObstacle>();
@@ -262,14 +266,16 @@ public class Level : MonoBehaviour
         int turret_id = turrets_position.Count;
         // randomly draw turrets near warehouses
         // record the x position and z position of the warehouse 
-        Vector3[] positions = new Vector3[]{new Vector3(8.0f, 0.0f, 8.0f), new Vector3(-8.0f, 0.0f, 8.0f), new Vector3(-8.0f, 0.0f, -8.0f), new Vector3(8.0f, 0.0f, -8.0f)};
+        Vector3[] positions = new Vector3[] { new Vector3(8.0f, 0.0f, 8.0f), new Vector3(-8.0f, 0.0f, 8.0f), new Vector3(-8.0f, 0.0f, -8.0f), new Vector3(8.0f, 0.0f, -8.0f) };
         for (int i = 0; i < actual_warehouses_position_in_world.Count; i++)
         {
             bool[] isCreated = new bool[4];
             int num_turret_near_warehouses = Random.Range(0, 4);
-            for (int j = 0; j < num_turret_near_warehouses; j++) {
+            for (int j = 0; j < num_turret_near_warehouses; j++)
+            {
                 rand_index = Random.Range(0, 4);
-                while(isCreated[rand_index]) {
+                while (isCreated[rand_index])
+                {
                     rand_index = Random.Range(0, 4);
                     isCreated[rand_index] = true;
                 }
@@ -278,7 +284,7 @@ public class Level : MonoBehaviour
             }
             turret_id += num_turret_near_warehouses;
         }
-        
+
     }
 
 
